@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		607ACD1134A2A5F82BCDF64B /* Pods_Lottery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35339C2C9E8B052FCD31B39C /* Pods_Lottery.framework */; };
 		D00A2A141D7B773E00C1E1C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A131D7B773E00C1E1C0 /* AppDelegate.swift */; };
 		D00A2A161D7B773E00C1E1C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A151D7B773E00C1E1C0 /* ViewController.swift */; };
 		D00A2A191D7B773E00C1E1C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00A2A171D7B773E00C1E1C0 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 		D00A2A371D7B773E00C1E1C0 /* LotteryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A361D7B773E00C1E1C0 /* LotteryUITests.swift */; };
 		D00A2A471D7E667000C1E1C0 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */; };
 		D00A2A491D7E696700C1E1C0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A481D7E696700C1E1C0 /* GameViewController.swift */; };
+		D0E09D7D1D81A3CA00147A10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A4F47069DEFA8B6B7C7586E /* Pods_LotteryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LotteryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35339C2C9E8B052FCD31B39C /* Pods_Lottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1744E8912AC7C3AC755332 /* Pods-Lottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lottery/Pods-Lottery.debug.xcconfig"; sourceTree = "<group>"; };
+		ACA4E2FCD229DC8B255E2995 /* Pods_LotteryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LotteryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00A2A101D7B773E00C1E1C0 /* Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00A2A131D7B773E00C1E1C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D00A2A151D7B773E00C1E1C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +59,8 @@
 		D00A2A381D7B773E00C1E1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameTableViewCell.swift; path = ../GameTableViewCell.swift; sourceTree = "<group>"; };
 		D00A2A481D7E696700C1E1C0 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lottery/Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607ACD1134A2A5F82BCDF64B /* Pods_Lottery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,13 +89,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4BD8CA4C614A1D19B291F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35339C2C9E8B052FCD31B39C /* Pods_Lottery.framework */,
+				ACA4E2FCD229DC8B255E2995 /* Pods_LotteryTests.framework */,
+				1A4F47069DEFA8B6B7C7586E /* Pods_LotteryUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D00A2A071D7B773E00C1E1C0 = {
 			isa = PBXGroup;
 			children = (
+				D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */,
 				D00A2A121D7B773E00C1E1C0 /* Lottery */,
+				D0211BCC1D8092F100A88380 /* VCs */,
 				D00A2A2A1D7B773E00C1E1C0 /* LotteryTests */,
 				D00A2A351D7B773E00C1E1C0 /* LotteryUITests */,
 				D00A2A111D7B773E00C1E1C0 /* Products */,
+				E058550E5227BAC14FABF4E9 /* Pods */,
+				3F4BD8CA4C614A1D19B291F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,9 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				D00A2A131D7B773E00C1E1C0 /* AppDelegate.swift */,
-				D00A2A151D7B773E00C1E1C0 /* ViewController.swift */,
 				D00A2A171D7B773E00C1E1C0 /* Main.storyboard */,
-				D00A2A481D7E696700C1E1C0 /* GameViewController.swift */,
 				D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */,
 				D00A2A1D1D7B773E00C1E1C0 /* Assets.xcassets */,
 				D00A2A1F1D7B773E00C1E1C0 /* LaunchScreen.storyboard */,
@@ -134,6 +155,25 @@
 			path = LotteryUITests;
 			sourceTree = "<group>";
 		};
+		D0211BCC1D8092F100A88380 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				D00A2A151D7B773E00C1E1C0 /* ViewController.swift */,
+				D00A2A481D7E696700C1E1C0 /* GameViewController.swift */,
+			);
+			name = VCs;
+			path = Lottery;
+			sourceTree = "<group>";
+		};
+		E058550E5227BAC14FABF4E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B1744E8912AC7C3AC755332 /* Pods-Lottery.debug.xcconfig */,
+				D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,9 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D00A2A3B1D7B773E00C1E1C0 /* Build configuration list for PBXNativeTarget "Lottery" */;
 			buildPhases = (
+				71DB4176F0500977E4309983 /* 📦 Check Pods Manifest.lock */,
 				D00A2A0C1D7B773E00C1E1C0 /* Sources */,
 				D00A2A0D1D7B773E00C1E1C0 /* Frameworks */,
 				D00A2A0E1D7B773E00C1E1C0 /* Resources */,
+				8413C5260BA1C39AA69B241A /* 📦 Embed Pods Frameworks */,
+				8F834F77508DCE9DA34DA0C6 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D00A2A211D7B773E00C1E1C0 /* LaunchScreen.storyboard in Resources */,
+				D0E09D7D1D81A3CA00147A10 /* GoogleService-Info.plist in Resources */,
 				D00A2A1E1D7B773E00C1E1C0 /* Assets.xcassets in Resources */,
 				D00A2A191D7B773E00C1E1C0 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +303,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		71DB4176F0500977E4309983 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8413C5260BA1C39AA69B241A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lottery/Pods-Lottery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F834F77508DCE9DA34DA0C6 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lottery/Pods-Lottery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D00A2A0C1D7B773E00C1E1C0 /* Sources */ = {
@@ -411,6 +503,7 @@
 		};
 		D00A2A3C1D7B773E00C1E1C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1744E8912AC7C3AC755332 /* Pods-Lottery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Lottery/Info.plist;
@@ -422,6 +515,7 @@
 		};
 		D00A2A3D1D7B773E00C1E1C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Lottery/Info.plist;
