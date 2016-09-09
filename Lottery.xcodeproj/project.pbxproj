@@ -59,7 +59,7 @@
 		D00A2A381D7B773E00C1E1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameTableViewCell.swift; path = ../GameTableViewCell.swift; sourceTree = "<group>"; };
 		D00A2A481D7E696700C1E1C0 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lottery/Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +102,6 @@
 		D00A2A071D7B773E00C1E1C0 = {
 			isa = PBXGroup;
 			children = (
-				D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */,
 				D00A2A121D7B773E00C1E1C0 /* Lottery */,
 				D0211BCC1D8092F100A88380 /* VCs */,
 				D00A2A2A1D7B773E00C1E1C0 /* LotteryTests */,
@@ -132,6 +131,7 @@
 				D00A2A1D1D7B773E00C1E1C0 /* Assets.xcassets */,
 				D00A2A1F1D7B773E00C1E1C0 /* LaunchScreen.storyboard */,
 				D00A2A221D7B773E00C1E1C0 /* Info.plist */,
+				D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */,
 				D00A2A1A1D7B773E00C1E1C0 /* Lottery.xcdatamodeld */,
 			);
 			path = Lottery;

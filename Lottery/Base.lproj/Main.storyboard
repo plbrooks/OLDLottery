@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -50,7 +51,7 @@
                                                 <constraint firstAttribute="width" constant="46" id="gmx-5n-gBP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -69,7 +70,7 @@
                                                 <constraint firstAttribute="width" constant="132" id="WB5-eJ-ylo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -98,12 +99,12 @@
                                             <exclude reference="krE-V1-HXI"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="8fH-c9-aOb"/>
-                                            <exclude reference="lRA-pC-Bqb"/>
-                                            <exclude reference="o7z-ex-jCC"/>
                                             <exclude reference="hxV-dD-F67"/>
                                             <exclude reference="idn-zr-k2w"/>
                                             <exclude reference="x2Y-YK-YEa"/>
+                                            <exclude reference="8fH-c9-aOb"/>
+                                            <exclude reference="lRA-pC-Bqb"/>
+                                            <exclude reference="o7z-ex-jCC"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -112,12 +113,12 @@
                                             <include reference="krE-V1-HXI"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="8fH-c9-aOb"/>
-                                            <include reference="lRA-pC-Bqb"/>
-                                            <include reference="o7z-ex-jCC"/>
                                             <include reference="hxV-dD-F67"/>
                                             <include reference="idn-zr-k2w"/>
                                             <include reference="x2Y-YK-YEa"/>
+                                            <include reference="8fH-c9-aOb"/>
+                                            <include reference="lRA-pC-Bqb"/>
+                                            <include reference="o7z-ex-jCC"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -126,12 +127,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D0F-lO-ZTU" id="EDc-vJ-yS0">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdP-48-sID" userLabel="CellGameName">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": 1.23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgA-tW-W64" userLabel="CellValue">
@@ -140,7 +142,7 @@
                                                         <constraint firstAttribute="width" constant="41" id="qLs-9O-Z7y"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -168,12 +170,12 @@
                                                     <exclude reference="vgA-tW-W64"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="IrE-Vr-Vgy"/>
+                                                    <exclude reference="yTf-dc-3sN"/>
                                                     <exclude reference="Igo-Fl-KRD"/>
                                                     <exclude reference="OvL-BN-nh5"/>
                                                     <exclude reference="SpS-fp-SpZ"/>
                                                     <exclude reference="lrV-0f-N5I"/>
-                                                    <exclude reference="IrE-Vr-Vgy"/>
-                                                    <exclude reference="yTf-dc-3sN"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -182,12 +184,12 @@
                                                     <include reference="vgA-tW-W64"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="IrE-Vr-Vgy"/>
+                                                    <include reference="yTf-dc-3sN"/>
                                                     <include reference="Igo-Fl-KRD"/>
                                                     <include reference="OvL-BN-nh5"/>
                                                     <include reference="SpS-fp-SpZ"/>
                                                     <include reference="lrV-0f-N5I"/>
-                                                    <include reference="IrE-Vr-Vgy"/>
-                                                    <include reference="yTf-dc-3sN"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

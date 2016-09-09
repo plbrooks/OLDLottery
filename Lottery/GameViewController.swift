@@ -23,14 +23,30 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var refHandleGameDetail: FIRDatabaseHandle!
     
     var storageRef: FIRStorageReference!
-    var remoteConfig: FIRRemoteConfig!
+    //var remoteConfig: FIRRemoteConfig!
     
-    var Countries: [FIRDataSnapshot]! = []
-    var Games: [FIRDataSnapshot]! = []
-    var GamesDetail: [FIRDataSnapshot]! = []
+    class game {
+        var name = ""
+        var wager = 0
+        var oddsToWin = 0.0
+        var oddsToWinTopPrize = 0
+    }
     
+    var games: [game] = []                  // empty array of game classes
     
+    // Update defaults!
+
     
+    var lotteryLocation = [
+        "country" : "United States",
+        "division" : "Massachusetts",
+        "divisionTitle" : "",
+        "abbrev" : "",
+        "currencyName" : "",
+        "currencySymbol" : ""
+    ]
+    
+    // add Firebase to viewWillAppear not viewDidLoad?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +55,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         FIRDatabase.database().persistenceEnabled = true
         configureDatabase()
-        
-        //self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "GameCell")
-
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,44 +73,58 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     deinit {
-        self.ref.child("Countries").removeObserverWithHandle(refHandleCountries)
-        self.ref.child("Games").removeObserverWithHandle(refHandleCountries)
-        self.ref.child("GameDetail").removeObserverWithHandle(refHandleCountries)
- 
+        self.ref.child(lotteryLocation["country"]!).removeObserverWithHandle(refHandleGames)
     }
     
     func configureDatabase() {
+       
+        // parse JSON using pod?
         
         ref = FIRDatabase.database().reference()
+        let country = lotteryLocation["country"]!
+        let division = lotteryLocation["division"]!
         
-        // Listen for new country in the Firebase database
-        refHandleCountries = self.ref.child("Countries").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        // Listen for new Country in the Firebase database
+        refHandleGames = self.ref.child(country).observeEventType(.Value, withBlock: { (snapshot) -> Void in
             
-            self.Countries.append(snapshot)
-            print("countries snapshot = \(snapshot)")
-            
-        })
-        
-         // Listen for new Game in the Firebase database
-        refHandleGames = self.ref.child("Games").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            
-            self.Games.append(snapshot)
-            print("games snapshot = \(snapshot)")
-            //self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.FirebaseDB.count-1, inSection: 0)], withRowAnimation: .Automatic)
-        
-        })
-        
-         // Listen for new Game Detail in the Firebase database
-        refHandleGameDetail = self.ref.child("Games Detail").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            
-            self.GamesDetail.append(snapshot)
-            print("games detail snapshot = \(snapshot)")
-            //self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.FirebaseDB.count-1, inSection: 0)], withRowAnimation: .Automatic)
-            
-        })
+            if snapshot.exists() {
+                
+                let countryInfo = snapshot.value! as! NSDictionary
 
+                if let description = countryInfo["Description"] {
+                    self.lotteryLocation["abbrev"] = description["Abbrev"] as? String
+                    self.lotteryLocation["currencyName"] = description["Currency Name"] as? String
+                    self.lotteryLocation["currencySymbol"] = description["Currency Symbol"] as? String
+                    //print("lotteryLocation = \(self.lotteryLocation)")
+                }
+        
+                if let lotteryInfo = countryInfo[division] as? NSDictionary {
+                    for (gameName, gameInfo) in lotteryInfo {
+                        
+                        // Note: Need to downcast all JSON fields. "Segemention fault: 11" error means mismatch between var definition and JSON
+                        let thisGame = game()
+                        thisGame.name = gameName as! String
+                        var thisInfo = gameInfo as! [String : AnyObject]
+                        thisGame.wager = Int(thisInfo["Wager"] as! String)!
+                        thisGame.oddsToWin = thisInfo["Odds To Win"] as! Double
+                        thisGame.oddsToWinTopPrize = Int(thisInfo["Odds To Win Top Prize"] as! NSNumber)
+                        self.games.append(thisGame)
+                        // how to sort http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value towards bottom
+                        
+                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.games.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    }
+                }
+                
+            } else {
+            
+                print("no snapshot")
+                return
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
-    
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -106,7 +134,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return games.count
     }
     
     
@@ -114,10 +142,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cellIdentifier = "GameCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GameTableViewCell
-        cell.gameName.text = "hi"
-        cell.GameValue.text = "ho"
+        
+        let gamesRow = games[indexPath.row]
+        
+        cell.gameName.text = gamesRow.name
+        cell.GameValue.text = String(gamesRow.oddsToWin)
         
         return cell
     }
-
+    
 }
