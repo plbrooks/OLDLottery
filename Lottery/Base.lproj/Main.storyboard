@@ -40,7 +40,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="atx-zM-8Cx">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="7pU-q2-pxO">
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="7pU-q2-pxO" userLabel="tableHeaderView">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -133,30 +133,61 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="17" y="-3" width="218" height="38"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": 1.23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgA-tW-W64" userLabel="CellValue">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="41" id="qLs-9O-Z7y"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="296" y="5" width="41" height="21"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="qLs-9O-Z7y"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="qLs-9O-Z7y"/>
+                                                        </mask>
                                                     </variation>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zdP-48-sID" firstAttribute="top" secondItem="EDc-vJ-yS0" secondAttribute="topMargin" constant="-11" id="Igo-Fl-KRD"/>
+                                                <constraint firstItem="vgA-tW-W64" firstAttribute="leading" secondItem="zdP-48-sID" secondAttribute="trailing" constant="61" id="IrE-Vr-Vgy"/>
+                                                <constraint firstItem="zdP-48-sID" firstAttribute="centerY" secondItem="vgA-tW-W64" secondAttribute="centerY" id="OvL-BN-nh5"/>
+                                                <constraint firstItem="zdP-48-sID" firstAttribute="leading" secondItem="EDc-vJ-yS0" secondAttribute="leadingMargin" constant="9" id="SpS-fp-SpZ"/>
+                                                <constraint firstItem="zdP-48-sID" firstAttribute="bottom" secondItem="EDc-vJ-yS0" secondAttribute="bottomMargin" id="lrV-0f-N5I"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vgA-tW-W64" secondAttribute="trailing" constant="55" id="yTf-dc-3sN"/>
+                                            </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="zdP-48-sID"/>
                                                     <exclude reference="vgA-tW-W64"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Igo-Fl-KRD"/>
+                                                    <exclude reference="OvL-BN-nh5"/>
+                                                    <exclude reference="SpS-fp-SpZ"/>
+                                                    <exclude reference="lrV-0f-N5I"/>
+                                                    <exclude reference="IrE-Vr-Vgy"/>
+                                                    <exclude reference="yTf-dc-3sN"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="zdP-48-sID"/>
                                                     <include reference="vgA-tW-W64"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Igo-Fl-KRD"/>
+                                                    <include reference="OvL-BN-nh5"/>
+                                                    <include reference="SpS-fp-SpZ"/>
+                                                    <include reference="lrV-0f-N5I"/>
+                                                    <include reference="IrE-Vr-Vgy"/>
+                                                    <include reference="yTf-dc-3sN"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -176,14 +207,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="atx-zM-8Cx" firstAttribute="top" secondItem="LDK-Gk-Ay4" secondAttribute="bottom" id="41y-Az-yvH"/>
-                            <constraint firstItem="atx-zM-8Cx" firstAttribute="leading" secondItem="z0N-UC-xbO" secondAttribute="leadingMargin" constant="-20" id="8cm-LC-la8"/>
-                            <constraint firstItem="atx-zM-8Cx" firstAttribute="top" secondItem="LDK-Gk-Ay4" secondAttribute="bottom" id="RIb-kA-dFv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="atx-zM-8Cx" secondAttribute="trailing" constant="-20" id="W0c-J3-Z9H"/>
-                            <constraint firstItem="kxp-56-abk" firstAttribute="top" secondItem="atx-zM-8Cx" secondAttribute="bottom" id="YPd-I6-x1s"/>
+                            <constraint firstItem="atx-zM-8Cx" firstAttribute="top" secondItem="LDK-Gk-Ay4" secondAttribute="bottom" id="2Bi-l5-hSF"/>
                             <constraint firstItem="LDK-Gk-Ay4" firstAttribute="top" secondItem="cFp-bt-0qF" secondAttribute="bottom" id="jzX-47-5Jf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="atx-zM-8Cx" secondAttribute="trailing" constant="-20" id="pkJ-uY-S8T"/>
                             <constraint firstItem="LDK-Gk-Ay4" firstAttribute="leading" secondItem="z0N-UC-xbO" secondAttribute="leadingMargin" constant="-20" id="sPG-2h-3ci"/>
+                            <constraint firstItem="atx-zM-8Cx" firstAttribute="bottom" secondItem="kxp-56-abk" secondAttribute="top" id="t7o-i8-Yb6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LDK-Gk-Ay4" secondAttribute="trailing" constant="-20" id="wLa-mV-0Lt"/>
+                            <constraint firstItem="atx-zM-8Cx" firstAttribute="leading" secondItem="z0N-UC-xbO" secondAttribute="leadingMargin" constant="-20" id="wzJ-1b-xEN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -194,11 +224,10 @@
                                 <exclude reference="jzX-47-5Jf"/>
                                 <exclude reference="sPG-2h-3ci"/>
                                 <exclude reference="wLa-mV-0Lt"/>
-                                <exclude reference="41y-Az-yvH"/>
-                                <exclude reference="8cm-LC-la8"/>
-                                <exclude reference="RIb-kA-dFv"/>
-                                <exclude reference="W0c-J3-Z9H"/>
-                                <exclude reference="YPd-I6-x1s"/>
+                                <exclude reference="2Bi-l5-hSF"/>
+                                <exclude reference="pkJ-uY-S8T"/>
+                                <exclude reference="t7o-i8-Yb6"/>
+                                <exclude reference="wzJ-1b-xEN"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -210,17 +239,17 @@
                                 <include reference="jzX-47-5Jf"/>
                                 <include reference="sPG-2h-3ci"/>
                                 <include reference="wLa-mV-0Lt"/>
-                                <include reference="41y-Az-yvH"/>
-                                <include reference="8cm-LC-la8"/>
-                                <include reference="RIb-kA-dFv"/>
-                                <include reference="W0c-J3-Z9H"/>
-                                <include reference="YPd-I6-x1s"/>
+                                <include reference="2Bi-l5-hSF"/>
+                                <include reference="pkJ-uY-S8T"/>
+                                <include reference="t7o-i8-Yb6"/>
+                                <include reference="wzJ-1b-xEN"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Most WInners" id="BQU-Yg-0ZV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tableHeaderView" destination="7pU-q2-pxO" id="eQq-sA-O8z"/>
                         <outlet property="tableView" destination="atx-zM-8Cx" id="qxI-Cr-52h"/>
                     </connections>
                 </viewController>
