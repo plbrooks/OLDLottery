@@ -13,7 +13,7 @@ class GameTableViewCell: UITableViewCell {
     // MARK: Properties
     
     @IBOutlet weak var gameName: UILabel!
-    @IBOutlet weak var GameValue: UILabel!
+    @IBOutlet weak var gameValue: UILabel!
     
 
     override func awakeFromNib() {

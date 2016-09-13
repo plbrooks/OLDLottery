@@ -15,6 +15,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHeaderView: UIView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var ref: FIRDatabaseReference!
 
@@ -26,32 +27,40 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     //var remoteConfig: FIRRemoteConfig!
     
     class game {
-        var name = ""
-        var wager = 0
-        var oddsToWin = 0.0
-        var oddsToWinTopPrize = 0
+        var name                = ""
+        var wager               = 0
+        var topPrize            = ""
+        var oddsToWin           = 0.0
+        var oddsToWinTopPrize   = 0
+        var totalWinners        = 0
+        var totalWinnings       = 0
+        var topPrizeDetails     = ""
+        var gameType            = ""
+        var updateDate          = ""
     }
     
-    var games: [game] = []                  // empty array of game classes
+    var gamesInput          : [game] = []               // unsorted array of games read in from
+    var gamesByOddsToWin    : [game] = []               // array of game classes sorted bg OddsToWin
+    var gamesByMaxPrize     : [game] = []               // array of game classes sorted by maximum prize
+    var gamesByPayout       : [game] = []               // array of game classes sorted by maximum payout
     
     // Update defaults!
-
     
     var lotteryLocation = [
-        "country" : "United States",
-        "division" : "Massachusetts",
-        "divisionTitle" : "",
-        "abbrev" : "",
-        "currencyName" : "",
-        "currencySymbol" : ""
+        "country"           : "United States",
+        "division"          : "Massachusetts",
+        "divisionTitle"     : "",
+        "abbrev"            : "",
+        "currencyName"      : "",
+        "currencySymbol"    : ""
     ]
     
     // add Firebase to viewWillAppear not viewDidLoad?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate      = self
+        tableView.dataSource    = self
         
         FIRDatabase.database().persistenceEnabled = true
         configureDatabase()
@@ -65,18 +74,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         if let header = tableHeaderView {
+            
             header.frame.size.height = 44.0
+            
         }
     }
     
     
     deinit {
+        
         self.ref.child(lotteryLocation["country"]!).removeObserverWithHandle(refHandleGames)
+        
     }
     
-    func configureDatabase() {
+    func configureDatabase() {  // first inititialization
        
         // parse JSON using pod?
         
@@ -102,18 +114,39 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     for (gameName, gameInfo) in lotteryInfo {
                         
                         // Note: Need to downcast all JSON fields. "Segemention fault: 11" error means mismatch between var definition and JSON
+                        // Numbers with no decimal point in the dict are NSNumbers, with "" are Strings,s and with decimal point are Doubles
                         let thisGame = game()
                         thisGame.name = gameName as! String
-                        var thisInfo = gameInfo as! [String : AnyObject]
-                        thisGame.wager = Int(thisInfo["Wager"] as! String)!
-                        thisGame.oddsToWin = thisInfo["Odds To Win"] as! Double
-                        thisGame.oddsToWinTopPrize = Int(thisInfo["Odds To Win Top Prize"] as! NSNumber)
-                        self.games.append(thisGame)
-                        // how to sort http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value towards bottom
                         
-                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.games.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                        
+                        var thisInfo = gameInfo as! [String : AnyObject]
+                        thisGame.wager = Int(thisInfo["Wager"] as! NSNumber)
+                        thisGame.topPrize = thisInfo["Top Prize"] as! String
+                        thisGame.oddsToWin = thisInfo["Odds To Win"] as! Double
+                        thisGame.totalWinners = Int(thisInfo["Total Winners"] as! NSNumber)
+                        thisGame.totalWinnings = Int(thisInfo["Total Winnings"] as! NSNumber)
+                        thisGame.oddsToWinTopPrize = Int(thisInfo["Odds To Win Top Prize"] as! NSNumber)
+                        thisGame.topPrizeDetails = thisInfo["Top Prize Details"] as! String
+                        thisGame.gameType = thisInfo["Type"] as! String
+                        thisGame.updateDate = thisInfo["Updated"] as! String
+                        self.gamesByOddsToWin.append(thisGame)
+        
+                        
+                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByOddsToWin.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
                     }
+                
+                // Copy and sort here
+                    
+                    // how to sort http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value
+                    // https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html
+                  
+        
+                    //self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByOddsToWin.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    
+                    self.gamesByOddsToWin.sortInPlace { $0.oddsToWin < $1.oddsToWin }
+                
                 }
+                
                 
             } else {
             
@@ -126,6 +159,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func sorterForOddsToWinASC(this:game, that:game) -> Bool {
+        return this.oddsToWin > that.oddsToWin
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -134,7 +170,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return games.count
+        return gamesByOddsToWin.count
     }
     
     
@@ -143,12 +179,20 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cellIdentifier = "GameCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GameTableViewCell
         
-        let gamesRow = games[indexPath.row]
+        let gamesRow = gamesByOddsToWin[indexPath.row]
+        
         
         cell.gameName.text = gamesRow.name
-        cell.GameValue.text = String(gamesRow.oddsToWin)
+        cell.gameValue.text = String(gamesRow.oddsToWin)
         
         return cell
     }
+    
+    @IBAction func segmentedControlActionChanged(sender: UISegmentedControl) {
+        
+        tableView.reloadData()
+        
+    }
+    
     
 }
