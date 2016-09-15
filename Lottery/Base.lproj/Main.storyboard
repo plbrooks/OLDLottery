@@ -151,6 +151,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="segmentedControl" destination="BVU-so-GCn" id="j7Q-jt-zG1"/>
+                        <outlet property="sortedColumnHeader" destination="zzP-fH-70p" id="bCB-11-g9R"/>
                         <outlet property="tableHeaderView" destination="xre-SD-65B" id="Pq1-At-tnZ"/>
                         <outlet property="tableView" destination="NEC-bA-z7N" id="jje-7S-77o"/>
                     </connections>
