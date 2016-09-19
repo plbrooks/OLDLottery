@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import HandySwift
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -34,7 +35,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var ref: FIRDatabaseReference!
 
     var refHandleCountries: FIRDatabaseHandle!
-    var refHandleGames: FIRDatabaseHandle!
+    
+    var refHandleAddGames: FIRDatabaseHandle!
+    var refHandleRemoveGames: FIRDatabaseHandle!
+    
     var refHandleGameDetail: FIRDatabaseHandle!
     
     var storageRef: FIRStorageReference!
@@ -53,10 +57,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         var updateDate          = ""
     }
     
-    var gamesInput          : [game] = []               // unsorted array of games read in from
     var gamesByOddsToWin    : [game] = []               // array of game classes sorted bg OddsToWin
     var gamesByTopPrize     : [game] = []               // array of game classes sorted by maximum prize
     var gamesByPayout       : [game] = []               // array of game classes sorted by maximum payout
+    var activeGame          : [game] = []               // unsorted array of games read in from
     
     // Update defaults!
     
@@ -77,7 +81,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource    = self
         
         FIRDatabase.database().persistenceEnabled = true
+    
+        segmentedControl.selectedSegmentIndex = getSegmentOptionFromUserDefaults()
+        
+        sortFiles(segmentedControl)
+        setTableHeader(segmentedControl)
+        
         configureDatabase()
+        
     }
 
     
@@ -98,7 +109,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     deinit {
         
-        self.ref.child(lotteryLocation["country"]!).removeObserverWithHandle(refHandleGames)
+        self.ref.child(lotteryLocation["country"]!).removeObserverWithHandle(refHandleAddGames)
+        self.ref.child(lotteryLocation["country"]!).removeObserverWithHandle(refHandleRemoveGames)
         
     }
     
@@ -108,16 +120,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         ref = FIRDatabase.database().reference()
         let refKey = lotteryLocation["country"]! + "/" + lotteryLocation["division"]!
-        refHandleGames = self.ref.child(refKey).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        refHandleAddGames = self.ref.child(refKey).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             
-        //refHandleGames = self.ref.child(country).observeEventType(.Value, withBlock: { (snapshot) -> Void in
+            //refHandleGames = self.ref.child(country).observeEventType(.Value, withBlock: { (snapshot) -> Void in
             
             if snapshot.exists() {
                 
                 let gameInfo = snapshot.value! as! NSDictionary
-
+                
                 print("snapshot key = \(snapshot.key)")
                 print("gameInfo = \(gameInfo)")
+                
+                // if gameInfo shows up as all game, delete all US games in Firebase and re-import
                 
                 if snapshot.key == Constants.descrip {
                     
@@ -126,41 +140,68 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.lotteryLocation["currencySymbol"] = gameInfo["Currency Symbol"] as? String
                     
                 } else {
-        
-                        // Note: Need to downcast all JSON fields. "Segemention fault: 11" error means mismatch between var definition and JSON
-                        // Numbers with no decimal point in the dict are NSNumbers, with "" are Strings,s and with decimal point are Doubles
-
-                        
-                        let thisGame = game()
-                        thisGame.name = self.formatName(snapshot.key)!
-                        thisGame.wager = Int(gameInfo["Wager"] as! NSNumber)
-                        thisGame.topPrize = Int(gameInfo["Top Prize"] as! NSNumber)
-                        thisGame.oddsToWin = gameInfo["Odds To Win"] as! Double
-                        thisGame.totalWinners = Int(gameInfo["Total Winners"] as! NSNumber)
-                        thisGame.totalWinnings = Int(gameInfo["Total Winnings"] as! NSNumber)
-                        thisGame.oddsToWinTopPrize = Int(gameInfo["Odds To Win Top Prize"] as! NSNumber)
-                        thisGame.topPrizeDetails = gameInfo["Top Prize Details"] as! String
-                        thisGame.gameType = gameInfo["Type"] as! String
-                        thisGame.updateDate = gameInfo["Updated"] as! String
-                        self.gamesByOddsToWin.append(thisGame)
-                        
-                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByOddsToWin.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-                        
-                    //}
-                }
-
-                // Copy and sort here
                     
+                    // Note: Need to downcast all JSON fields. "Segemention fault: 11" error means mismatch between var definition and JSON definition
+                    // Numbers with no decimal point in the dict are NSNumbers, with "" are Strings, and with decimal point are Doubles
+                    
+                    let thisGame = game()
+                    thisGame.name = self.formatName(snapshot.key)!
+                    thisGame.wager = Int(gameInfo["Wager"] as! NSNumber)
+                    thisGame.topPrize = Int(gameInfo["Top Prize"] as! NSNumber)
+                    thisGame.oddsToWin = gameInfo["Odds To Win"] as! Double
+                    thisGame.totalWinners = Int(gameInfo["Total Winners"] as! NSNumber)
+                    thisGame.totalWinnings = Int(gameInfo["Total Winnings"] as! NSNumber)
+                    thisGame.oddsToWinTopPrize = Int(gameInfo["Odds To Win Top Prize"] as! NSNumber)
+                    thisGame.topPrizeDetails = gameInfo["Top Prize Details"] as! String
+                    thisGame.gameType = gameInfo["Type"] as! String
+                    thisGame.updateDate = gameInfo["Updated"] as! String
+                    
+                    
+                    
+                    let range = snapshot.key.startIndex..<snapshot.key.startIndex.advancedBy(3)
+                    let arrayMemberNo = Int(snapshot.key.substringWithRange(range))
+                    
+
+                    switch(self.segmentedControl.selectedSegmentIndex)
+                        
+                    {
+                    case segmentOptionIs.oddsToWin:
+        
+                            self.gamesByOddsToWin.insert(thisGame, atIndex: arrayMemberNo!-1)
+                            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByOddsToWin.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                            break
+
+                    case
+                    segmentOptionIs.payout:
+                        self.gamesByPayout.append(thisGame)
+                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByPayout.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                            break
+                        
+                    case segmentOptionIs.topPrize:
+                        
+                        self.gamesByTopPrize.append(thisGame)
+                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByTopPrize.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                        break
+                        
+                    default:
+                        break
+                        
+                    }
+                    
+                }
+                
+                // Copy and sort here
+                
                 // how to sort http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value
                 // https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html
-              
-    
+                
+                
                 //self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.gamesByOddsToWin.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-                    
+                
                 
                 
             } else {
-            
+                
                 print("no snapshot")
                 return
             }
@@ -170,6 +211,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /*func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true}*/
+    
+    /* override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     var itemToMove = tableData[fromIndexPath.row]
+     tableData.removeAtIndex(fromIndexPath.row)
+     tableData.insert(itemToMove, atIndex: toIndexPath.row)
+     }*/
+ 
+ 
+ 
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -200,10 +252,36 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return returnValue
         
-        //return gamesByOddsToWin.count
-        
     }
     
+/*    func tableView(tableView: NSTableView,
+                   sortDescriptorsDidChange oldDescriptors: NSSortDescriptor) {
+        var array = NSMutableArray(array: recipes)
+        array.sortUsingDescriptors(tableView.sortDescriptors)
+        recipes = array as AnyObject as! [Recipe]
+        tableView.reloadData()
+    }*/
+    
+    
+    /*func tableView(tableView: UITableView, sortDescriptorsDidChange oldDescriptors: NSSortDescriptor) {
+        // 1
+        
+        let sortDescriptor = NSSortDescriptor(key: "topPrize", ascending: true,
+                                              selector: #selector(NSString.localizedStandardCompare))
+        
+        guard let sortDescriptor = tableView.sortDescriptors.first else {
+            return
+        }
+        if let order = Directory.FileOrder(rawValue: sortDescriptor.key! ) {
+            // 2
+            sortOrder = order
+            sortAscending = sortDescriptor.ascending
+         
+         let sort = NSSortDescriptor(key: "contentid", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+            reloadFileList()
+        }
+        tableView.reloadData()
+    }*/
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -247,33 +325,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func segmentedControlActionChanged(sender: UISegmentedControl) {
         
-        switch(segmentedControl.selectedSegmentIndex)
-        {
-        case segmentOptionIs.oddsToWin:
-            
-            sortedColumnHeader.text = sortedColumnHeaderText.oddsToWin
-            // no need to sort, already sorted
-            break
-            
-        case segmentOptionIs.payout:
-            
-            sortedColumnHeader.text = sortedColumnHeaderText.payout
-            self.gamesByPayout = self.gamesByOddsToWin.sort { $0.totalWinnings > $1.totalWinnings }
-            break
-            
-        case segmentOptionIs.topPrize:
-            
-            sortedColumnHeader.text = sortedColumnHeaderText.topPrize
-            self.gamesByTopPrize = self.gamesByOddsToWin.sort { $0.topPrize > $1.topPrize }
-            break
-            
-        default:
-            break
-            
-        }
+        setTableHeader(segmentedControl)
+        sortFiles(segmentedControl)
         tableView.reloadData()
-        
-        
+        saveSegmentOptionToUserDefaults(segmentedControl)
+    
     }
     
     func formatName(oldName: String) -> String? {
@@ -290,6 +346,68 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func setTableHeader(segmentOption: UISegmentedControl) {
+        
+        switch(segmentOption.selectedSegmentIndex)
+        {
+        case segmentOptionIs.oddsToWin:
+            
+            sortedColumnHeader.text = sortedColumnHeaderText.oddsToWin
+            break
+            
+        case segmentOptionIs.payout:
+            
+            sortedColumnHeader.text = sortedColumnHeaderText.payout
+            break
+            
+        case segmentOptionIs.topPrize:
+            
+            sortedColumnHeader.text = sortedColumnHeaderText.topPrize
+            break
+            
+        default:
+            break
+            
+        }
+    
+    }
+    
+    func sortFiles(segmentOption: UISegmentedControl) {
+        
+        switch(segmentOption.selectedSegmentIndex)
+        {
+        case segmentOptionIs.oddsToWin:
+            
+            self.gamesByOddsToWin.sortInPlace { $0.oddsToWin > $1.oddsToWin }
+            break
+            
+        case segmentOptionIs.payout:
+            
+            self.gamesByPayout.sortInPlace { $0.totalWinnings > $1.totalWinnings }
+            break
+            
+        case segmentOptionIs.topPrize:
+            
+            self.gamesByTopPrize.sortInPlace { $0.topPrize > $1.topPrize }
+            break
+            
+        default:
+            break
+            
+        }
+        
+    }
+    func saveSegmentOptionToUserDefaults(segmentedControl: UISegmentedControl) {
+    
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setInteger(segmentedControl.selectedSegmentIndex, forKey: "SegmentValue")
+    }
+    
+    func getSegmentOptionFromUserDefaults() -> Int {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        return defaults.integerForKey("SegmentValue")
+    }
+    
     func priceFromInt(num: Int) -> String {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .CurrencyStyle
@@ -299,5 +417,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return(formatter.stringFromNumber(num)!) // "$123.44"
     }
 
+    
+    
+    
+    
     
 }
