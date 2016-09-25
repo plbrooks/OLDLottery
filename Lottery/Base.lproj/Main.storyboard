@@ -44,9 +44,9 @@
                                     <constraint firstAttribute="width" constant="269" id="9bV-oK-bbo"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Odds to Win"/>
-                                    <segment title="Payout"/>
-                                    <segment title="Max Prize"/>
+                                    <segment title="By Odds to Win"/>
+                                    <segment title="By Payout"/>
+                                    <segment title="By Max Prize"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentedControlActionChanged:" destination="eDa-5K-kVj" eventType="valueChanged" id="et5-sG-TyW"/>
