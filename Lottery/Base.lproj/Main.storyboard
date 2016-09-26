@@ -37,7 +37,7 @@
                         <viewControllerLayoutGuide type="bottom" id="90w-hZ-A8f"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5gI-Az-lrf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BVU-so-GCn">
@@ -57,10 +57,10 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" id="cI7-VG-Ewc" customClass="GameTableViewCell" customModule="Lottery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cI7-VG-Ewc" id="KTT-hD-Trk">
-                                            <frame key="frameInset" width="374" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMx-Fz-Syq">
@@ -127,16 +127,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XMU-Lw-PKE" secondAttribute="trailing" id="0Ab-LT-zzo"/>
                             <constraint firstItem="NEC-bA-z7N" firstAttribute="top" secondItem="XMU-Lw-PKE" secondAttribute="bottom" id="0MV-jP-3nK"/>
-                            <constraint firstItem="tEv-gV-vlD" firstAttribute="trailing" secondItem="5gI-Az-lrf" secondAttribute="trailingMargin" id="9JV-VY-73K"/>
-                            <constraint firstItem="NEC-bA-z7N" firstAttribute="trailing" secondItem="5gI-Az-lrf" secondAttribute="trailingMargin" id="CaL-Ab-3Wj"/>
+                            <constraint firstAttribute="trailing" secondItem="NEC-bA-z7N" secondAttribute="trailing" id="9On-TL-QMG"/>
+                            <constraint firstItem="NEC-bA-z7N" firstAttribute="leading" secondItem="5gI-Az-lrf" secondAttribute="leading" id="Cr9-6J-qbL"/>
                             <constraint firstItem="tEv-gV-vlD" firstAttribute="top" secondItem="qDs-ch-BGI" secondAttribute="bottom" id="EaU-Xf-S7K"/>
-                            <constraint firstItem="NEC-bA-z7N" firstAttribute="leading" secondItem="5gI-Az-lrf" secondAttribute="leadingMargin" id="FYh-IR-vFP"/>
+                            <constraint firstItem="90w-hZ-A8f" firstAttribute="top" secondItem="NEC-bA-z7N" secondAttribute="bottom" id="Fy7-gd-68O"/>
                             <constraint firstItem="90w-hZ-A8f" firstAttribute="top" secondItem="NEC-bA-z7N" secondAttribute="bottom" id="Hff-a9-PsK"/>
-                            <constraint firstItem="tEv-gV-vlD" firstAttribute="leading" secondItem="5gI-Az-lrf" secondAttribute="leadingMargin" id="JyW-Ct-iga"/>
+                            <constraint firstItem="XMU-Lw-PKE" firstAttribute="leading" secondItem="5gI-Az-lrf" secondAttribute="leading" id="MP7-zU-47F"/>
+                            <constraint firstAttribute="trailing" secondItem="tEv-gV-vlD" secondAttribute="trailing" id="S95-LS-iX8"/>
                             <constraint firstItem="90w-hZ-A8f" firstAttribute="top" secondItem="NEC-bA-z7N" secondAttribute="bottom" id="SVX-07-HsZ"/>
-                            <constraint firstItem="XMU-Lw-PKE" firstAttribute="leading" secondItem="5gI-Az-lrf" secondAttribute="leadingMargin" id="Xrj-Nu-jaj"/>
-                            <constraint firstItem="XMU-Lw-PKE" firstAttribute="trailing" secondItem="5gI-Az-lrf" secondAttribute="trailingMargin" id="oGf-2H-exw"/>
+                            <constraint firstItem="NEC-bA-z7N" firstAttribute="top" secondItem="XMU-Lw-PKE" secondAttribute="bottom" id="aV0-Hf-4kZ"/>
+                            <constraint firstItem="tEv-gV-vlD" firstAttribute="leading" secondItem="5gI-Az-lrf" secondAttribute="leading" id="u32-ig-0fW"/>
                             <constraint firstItem="BVU-so-GCn" firstAttribute="top" secondItem="tEv-gV-vlD" secondAttribute="bottom" constant="8" id="uRC-OO-fX0"/>
                             <constraint firstItem="XMU-Lw-PKE" firstAttribute="top" secondItem="BVU-so-GCn" secondAttribute="bottom" constant="8" id="vYE-Mg-y4S"/>
                             <constraint firstItem="BVU-so-GCn" firstAttribute="centerX" secondItem="5gI-Az-lrf" secondAttribute="centerX" id="yGb-sT-Zgk"/>
@@ -164,7 +166,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RlQ-6W-xev"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G1n-Yi-Vnb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxB-rX-5Be">
@@ -207,7 +209,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eSg-3P-U7m"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Znh-6S-jxV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-v1-0XQ">
