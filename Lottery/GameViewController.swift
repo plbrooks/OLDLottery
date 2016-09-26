@@ -10,6 +10,7 @@
 
 
 import UIKit
+import CoreLocation
 import Firebase
 import SwiftLocation
 
@@ -140,16 +141,23 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var r = Location.getLocation(withAccuracy: .city, frequency: .oneShot, timeout: 30, onSuccess: { (loc) in
-            print("loc \(loc)")
-        }) { (last, err) in
-            print("err \(err)")
-        }
-        r.onAuthorizationDidChange = { newStatus in
-            print("New status \(newStatus)")
-        }
+        if getLocationFromUserDefaults() == nil {
         
-        
+            var _ = Location.getLocation(withAccuracy: .city, frequency: .oneShot, timeout: 30, onSuccess: { (loc) in
+            
+                var _ = Location.reverse(coordinates: loc.coordinate, onSuccess: { foundPlacemark in
+                    // foundPlacemark is a CLPlacemark object
+                    self.saveLocationToUserDefaults(location: foundPlacemark)
+                    
+                }) { err in
+                    print("err \(err)")
+                }
+            
+            }) { (last, err) in
+                print("err \(err)")
+            }
+
+        }
         
         tableView.delegate      = self
         tableView.dataSource    = self
@@ -167,7 +175,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewWillAppear(animated)
         
-        segmentedControl.selectedSegmentIndex = getSegmentOptionFromUserDefaults()
+        segmentedControl.selectedSegmentIndex = getSegmentOptionFromUserDefaults()!
         setTableHeader(segmentedControl)
         
         tableView.reloadData()
@@ -396,7 +404,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         setTableHeader(segmentedControl)
         tableView.reloadData()
-        saveSegmentOptionToUserDefaults(segmentedControl)
+        saveSegmentOptionToUserDefaults(segmentedControl: segmentedControl)
     
     }
     
@@ -440,26 +448,46 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     }
     
-    func saveSegmentOptionToUserDefaults(_ segmentedControl: UISegmentedControl) {
+    // MARK: User Defaults
+
     
+    func saveSegmentOptionToUserDefaults(segmentedControl: UISegmentedControl) {
+        
         let defaults = UserDefaults.standard
         defaults.set(segmentedControl.selectedSegmentIndex, forKey: "SegmentValue")
     }
     
-    func getSegmentOptionFromUserDefaults() -> Int {
+    func getSegmentOptionFromUserDefaults() -> Int? {
         let defaults = UserDefaults.standard
         return defaults.integer(forKey: "SegmentValue")
     }
-    
-    func priceFromInt(_ num: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.positiveFormat = "$#,##0"
-        formatter.zeroSymbol = ""
-        // formatter.locale = NSLocale.currentLocale()  // This is the default
-        return(formatter.string(from: NSNumber(value: num)))!       // "$123.44"
-    }
 
+    func saveLocationToUserDefaults(location: CLPlacemark) {
+    
+        let defaults = UserDefaults.standard
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: location)
+        defaults.set(encodedData, forKey: "Location")
+        //print("end of save location")
+        //defaults.set(location, forKey: "Location")
+    }
+    
+    func getLocationFromUserDefaults() -> CLPlacemark? {
+        
+        let defaults = UserDefaults.standard
+        let location = defaults.object(forKey: "Location") as? NSData
+        var decodedLocation: CLPlacemark?
+        if location != nil {
+            decodedLocation = NSKeyedUnarchiver.unarchiveObject(with: location as! Data) as! CLPlacemark?
+        }
+        //let defaults = UserDefaults.standard
+        //return defaults.string(forKey: "Location")!
+        //print("loc = \(decodedLocation?.administrativeArea)")
+        return decodedLocation
+    }
+    
+    
+    // MARK: Add games
+    
     func addGameSortedByOddsToWin (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
         
         let thisOddsToWin = sortedByOddsToWin(name:gameName,oddsToWin:thisGame.oddsToWin)
@@ -531,6 +559,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    // MARK: Change games
+    
     func changeGameSortedByOddsToWin (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
         
         let currentIndex = gamesByOddsToWin.index(where: {$0.name == gameName})                  // find index of current row
@@ -589,6 +619,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
        
     }
 
+    // MARK: Move games
+    
     func removeGameSortedByOddsToWin (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
         
         let rowNumber = gamesByOddsToWin.index(where: {$0.name == gameName})
@@ -619,6 +651,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    // MARK: Create game
+    
     func createGameObjectUsingSnapshot(_ snapshot: FIRDataSnapshot) -> gameData {
         
         // Note: Need to downcast all JSON fields. "Segemention fault: 11" error means mismatch between var definition and JSON definition
@@ -638,6 +672,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return thisGame
     }
     
+    // MARK: Convenience funcs
     
+    func priceFromInt(_ num: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.positiveFormat = "$#,##0"
+        formatter.zeroSymbol = ""
+        // formatter.locale = NSLocale.currentLocale()  // This is the default
+        return(formatter.string(from: NSNumber(value: num)))!       // "$123.44"
+    }
     
 }
