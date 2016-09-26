@@ -14,7 +14,7 @@ import CoreLocation
 import Firebase
 import SwiftLocation
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+/*fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -41,7 +41,7 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   default:
     return !(rhs < lhs)
   }
-}
+}*/
 
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -496,7 +496,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // if the new Odds to win > any in the existing array
         
-        if gamesByOddsToWin.isEmpty || (thisGame.oddsToWin >= gamesByOddsToWin.last?.oddsToWin) {
+        if gamesByOddsToWin.isEmpty || (thisGame.oddsToWin >= (gamesByOddsToWin.last?.oddsToWin)!) {
             
             gamesByOddsToWin.append(thisOddsToWin)
             rowNumber = self.gamesByOddsToWin.count-1
@@ -520,7 +520,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         var rowNumber = 0
         
         // if the new prize > any in the existing array
-        if  gamesByTopPrize.isEmpty || (thisGame.topPrize <= gamesByTopPrize.last?.topPrize) {
+        if  gamesByTopPrize.isEmpty || (thisGame.topPrize <= (gamesByTopPrize.last?.topPrize)!) {
             gamesByTopPrize.append(thisTopPrize)
             rowNumber = self.gamesByTopPrize.count-1
         } else {
@@ -543,7 +543,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // if the new prize > any in the existing array
         
-        if gamesByPayout.isEmpty || (thisGame.totalWinnings <= gamesByPayout.last?.payout) {
+        if gamesByPayout.isEmpty || (thisGame.totalWinnings <= (gamesByPayout.last?.payout)!) {
             gamesByPayout.append(thisPayout)
             rowNumber = self.gamesByPayout.count-1
         } else {

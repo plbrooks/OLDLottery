@@ -18,6 +18,9 @@
 		D00A2A371D7B773E00C1E1C0 /* LotteryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A361D7B773E00C1E1C0 /* LotteryUITests.swift */; };
 		D00A2A471D7E667000C1E1C0 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */; };
 		D00A2A491D7E696700C1E1C0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A2A481D7E696700C1E1C0 /* GameViewController.swift */; };
+		D05347621D98C5DD00628586 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05347611D98C5DD00628586 /* LocationTableViewCell.swift */; };
+		D05347641D98CE8900628586 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05347631D98CE8900628586 /* NameTableViewCell.swift */; };
+		D05347661D98CFDF00628586 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05347651D98CFDF00628586 /* SettingsViewController.swift */; };
 		D0A156EE1D87B962006031BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A156ED1D87B962006031BC /* Constants.swift */; };
 		D0E09D7D1D81A3CA00147A10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		D00A2A381D7B773E00C1E1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameTableViewCell.swift; path = ../GameTableViewCell.swift; sourceTree = "<group>"; };
 		D00A2A481D7E696700C1E1C0 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D05347611D98C5DD00628586 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		D05347631D98CE8900628586 /* NameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		D05347651D98CFDF00628586 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D0A156ED1D87B962006031BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lottery/Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +135,9 @@
 			children = (
 				D00A2A131D7B773E00C1E1C0 /* AppDelegate.swift */,
 				D00A2A171D7B773E00C1E1C0 /* Main.storyboard */,
+				D05347631D98CE8900628586 /* NameTableViewCell.swift */,
 				D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */,
+				D05347611D98C5DD00628586 /* LocationTableViewCell.swift */,
 				D00A2A1D1D7B773E00C1E1C0 /* Assets.xcassets */,
 				D00A2A1F1D7B773E00C1E1C0 /* LaunchScreen.storyboard */,
 				D00A2A221D7B773E00C1E1C0 /* Info.plist */,
@@ -162,6 +170,7 @@
 			children = (
 				D00A2A151D7B773E00C1E1C0 /* ViewController.swift */,
 				D00A2A481D7E696700C1E1C0 /* GameViewController.swift */,
+				D05347651D98CFDF00628586 /* SettingsViewController.swift */,
 				D0A156ED1D87B962006031BC /* Constants.swift */,
 			);
 			name = VCs;
@@ -364,11 +373,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D00A2A491D7E696700C1E1C0 /* GameViewController.swift in Sources */,
+				D05347621D98C5DD00628586 /* LocationTableViewCell.swift in Sources */,
 				D00A2A161D7B773E00C1E1C0 /* ViewController.swift in Sources */,
 				D00A2A141D7B773E00C1E1C0 /* AppDelegate.swift in Sources */,
 				D00A2A1C1D7B773E00C1E1C0 /* Lottery.xcdatamodeld in Sources */,
 				D00A2A471D7E667000C1E1C0 /* GameTableViewCell.swift in Sources */,
+				D05347641D98CE8900628586 /* NameTableViewCell.swift in Sources */,
 				D0A156EE1D87B962006031BC /* Constants.swift in Sources */,
+				D05347661D98CFDF00628586 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
