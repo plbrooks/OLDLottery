@@ -202,7 +202,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="currentLocation" destination="hQ3-E1-1wS" id="fe2-DI-OfP"/>
+                                                    <outlet property="currentLocation" destination="hQ3-E1-1wS" id="DkV-sB-VlX"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameTableViewCell" id="PRj-HM-hkd" userLabel="Name Table View Cell" customClass="NameTableViewCell" customModule="Lottery" customModuleProvider="target">
@@ -236,10 +236,14 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="name" destination="GKr-Q6-act" id="Fg6-mF-otb"/>
+                                                    <outlet property="userName" destination="GKr-Q6-act" id="IQh-Vm-LTf"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="q9u-S5-XAM" id="i9d-eo-5fT"/>
+                                            <outlet property="delegate" destination="q9u-S5-XAM" id="LmS-Kz-fpZ"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,6 +277,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="T81-7S-fhZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="6KL-aA-mhN" id="m4C-Nj-yHm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="au9-Lr-RfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
