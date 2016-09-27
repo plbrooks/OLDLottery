@@ -222,8 +222,11 @@
                                                                 <constraint firstAttribute="width" constant="225" id="DTm-dT-CrI"/>
                                                             </constraints>
                                                             <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="q9u-S5-XAM" id="w6T-eE-uDt"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>

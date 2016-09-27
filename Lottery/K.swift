@@ -8,8 +8,11 @@
 
 import UIKit
 
-class Constants: NSObject {
+class K: NSObject {
     
     static let descrip = "DESCRIPTION"
+    static let locationKey = "Location"
+    static let segmentNumKey = "SegmentNum"
+    static let userNameKey = "UserName"
 
 }

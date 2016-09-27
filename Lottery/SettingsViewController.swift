@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import CoreLocation
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        //textField.delegate = self
 
     }
 
@@ -39,11 +41,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             
             cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell", for: indexPath) as! LocationTableViewCell
+            if let currentPlacemark = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.locationKey) as? CLPlacemark {
+                let country = currentPlacemark.country
+                var separator = ", "
+                let division = currentPlacemark.administrativeArea
+                if division == nil { separator = ""}
+                (cell as! LocationTableViewCell).currentLocation.text = division! + separator + country!
+            }
+            
 
         case 1:
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as! NameTableViewCell
-            (cell as! NameTableViewCell).userName.text = "hi ho"
-                       //cell.configure(text: "", placeholder: "Enter some text!")
+            let savedName = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.userNameKey) as? String
+            (cell as! NameTableViewCell).userName.text = savedName
             
         default:    // should never happen
             cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
@@ -63,6 +74,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        SharedServices.sharedInstance.saveToUserDefaultsThe(value: textField.text, forKey: K.userNameKey)
+    }
+    
 
-
+    /*func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Text field did begin editting")
+    }*/
+    
+    
 }

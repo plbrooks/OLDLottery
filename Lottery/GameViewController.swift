@@ -141,13 +141,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if getLocationFromUserDefaults() == nil {
+        if SharedServices.sharedInstance.getValueFromUserDefaultsFor(key:K.locationKey) == nil {
         
             var _ = Location.getLocation(withAccuracy: .city, frequency: .oneShot, timeout: 30, onSuccess: { (loc) in
             
                 var _ = Location.reverse(coordinates: loc.coordinate, onSuccess: { foundPlacemark in
                     // foundPlacemark is a CLPlacemark object
-                    self.saveLocationToUserDefaults(location: foundPlacemark)
+                    //self.saveLocationToUserDefaults(location: foundPlacemark)
+                    SharedServices.sharedInstance.saveToUserDefaultsThe(value: foundPlacemark, forKey: K.locationKey)
                     
                 }) { err in
                     print("err \(err)")
@@ -175,11 +176,23 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewWillAppear(animated)
         
-        segmentedControl.selectedSegmentIndex = getSegmentOptionFromUserDefaults()!
+        
+        segmentedControl.selectedSegmentIndex = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) as? Int ?? 0
+        /*if let segmentNum = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) {
+            segmentedControl.selectedSegmentIndex = segmentNum as! Int
+        }
+        else {
+            
+            segmentedControl.selectedSegmentIndex = 0
+        }*/
+        
+        
+        
+        
         setTableHeader(segmentedControl)
         
         tableView.reloadData()
-        print("data reloaded")
+        //print("data reloaded")
 
         
     }
@@ -226,7 +239,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let gameName = snapshot.key
                 
-                if snapshot.key == Constants.descrip {
+                if snapshot.key == K.descrip {
                     
                     let game = snapshot.value! as! NSDictionary
                     self.lotteryLocation["abbrev"] = game["Abbrev"] as? String
@@ -261,7 +274,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let gameName = snapshot.key
     
-                if snapshot.key == Constants.descrip {
+                if snapshot.key == K.descrip {
                     
                     let game = snapshot.value! as! NSDictionary
                     self.lotteryLocation["abbrev"] = game["Abbrev"] as? String
@@ -297,7 +310,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let gameName = snapshot.key
                 
-                if snapshot.key == Constants.descrip {
+                if snapshot.key == K.descrip {
                     
                     let game = snapshot.value! as! NSDictionary
                     self.lotteryLocation["abbrev"] = game["Abbrev"] as? String
@@ -404,7 +417,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         setTableHeader(segmentedControl)
         tableView.reloadData()
-        saveSegmentOptionToUserDefaults(segmentedControl: segmentedControl)
+        //saveSegmentOptionToUserDefaults(segmentedControl: segmentedControl)
+        SharedServices.sharedInstance.saveToUserDefaultsThe(value: segmentedControl.selectedSegmentIndex, forKey: K.segmentNumKey)
     
     }
     
@@ -451,10 +465,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: User Defaults
 
     
-    func saveSegmentOptionToUserDefaults(segmentedControl: UISegmentedControl) {
+    /*func saveSegmentOptionToUserDefaults(segmentedControl: UISegmentedControl) {
         
         let defaults = UserDefaults.standard
-        defaults.set(segmentedControl.selectedSegmentIndex, forKey: "SegmentValue")
+        defaults.set(segmentedControl.selectedSegmentIndex, forKey: Constants.segmentNumKey)
     }
     
     func getSegmentOptionFromUserDefaults() -> Int? {
@@ -483,7 +497,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         //return defaults.string(forKey: "Location")!
         //print("loc = \(decodedLocation?.administrativeArea)")
         return decodedLocation
-    }
+    }*/
     
     
     // MARK: Add games
