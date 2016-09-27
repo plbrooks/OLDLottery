@@ -40,7 +40,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.row{
         case 0:
             
-            cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell", for: indexPath) as! LocationTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: K.locationCellName, for: indexPath) as! LocationTableViewCell
             if let currentPlacemark = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.locationKey) as? CLPlacemark {
                 let country = currentPlacemark.country
                 var separator = ", "
@@ -48,11 +48,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if division == nil { separator = ""}
                 (cell as! LocationTableViewCell).currentLocation.text = division! + separator + country!
             }
-            
+            else {
+                (cell as! LocationTableViewCell).currentLocation.text = K.defaultLocationTextInCell
+            }
 
         case 1:
             
-            cell = tableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as! NameTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: K.userNameCellName, for: indexPath) as! NameTableViewCell
             let savedName = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.userNameKey) as? String
             (cell as! NameTableViewCell).userName.text = savedName
             
@@ -65,16 +67,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        /*let cell = tableView(tableView, cellForRowAt: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+    
+        //let row =
         
-        
-        if cell.isKindOfClass(NameTableViewCell) {
-            print("name cell print")
-        }*/
+        //if cell.isKindOfClass(NameTableViewCell) {
+        //    print("name cell print")
+        //}
     
     
     }
-    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         SharedServices.sharedInstance.saveToUserDefaultsThe(value: textField.text, forKey: K.userNameKey)

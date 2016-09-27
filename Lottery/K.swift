@@ -11,8 +11,17 @@ import UIKit
 class K: NSObject {
     
     static let descrip = "DESCRIPTION"
+    
+    // UserDefault keys
     static let locationKey = "Location"
     static let segmentNumKey = "SegmentNum"
     static let userNameKey = "UserName"
+    
+    // UITableViewCell names and defaults
+    
+    static let locationCellName = "LocationTableViewCell"
+    static let userNameCellName = "NameTableViewCell"
+    static let defaultLocationTextInCell = "Your Location"
+    
 
 }
