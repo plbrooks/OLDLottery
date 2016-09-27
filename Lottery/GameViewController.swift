@@ -10,10 +10,11 @@
 
 
 import UIKit
+import CoreLocation
 import Firebase
 import SwiftLocation
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+/*fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -40,7 +41,7 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   default:
     return !(rhs < lhs)
   }
-}
+}*/
 
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -140,16 +141,24 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var r = Location.getLocation(withAccuracy: .city, frequency: .oneShot, timeout: 30, onSuccess: { (loc) in
-            print("loc \(loc)")
-        }) { (last, err) in
-            print("err \(err)")
-        }
-        r.onAuthorizationDidChange = { newStatus in
-            print("New status \(newStatus)")
-        }
+        if SharedServices.sharedInstance.getValueFromUserDefaultsFor(key:K.locationKey) == nil {
         
-        
+            var _ = Location.getLocation(withAccuracy: .city, frequency: .oneShot, timeout: 30, onSuccess: { (loc) in
+            
+                var _ = Location.reverse(coordinates: loc.coordinate, onSuccess: { foundPlacemark in
+                    // foundPlacemark is a CLPlacemark object
+                    //self.saveLocationToUserDefaults(location: foundPlacemark)
+                    SharedServices.sharedInstance.saveToUserDefaultsThe(value: foundPlacemark, forKey: K.locationKey)
+                    
+                }) { err in
+                    print("err \(err)")
+                }
+            
+            }) { (last, err) in
+                print("err \(err)")
+            }
+
+        }
         
         tableView.delegate      = self
         tableView.dataSource    = self
@@ -167,11 +176,23 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewWillAppear(animated)
         
-        segmentedControl.selectedSegmentIndex = getSegmentOptionFromUserDefaults()
+        
+        segmentedControl.selectedSegmentIndex = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) as? Int ?? 0
+        /*if let segmentNum = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) {
+            segmentedControl.selectedSegmentIndex = segmentNum as! Int
+        }
+        else {
+            
+            segmentedControl.selectedSegmentIndex = 0
+        }*/
+        
+        
+        
+        
         setTableHeader(segmentedControl)
         
         tableView.reloadData()
-        print("data reloaded")
+        //print("data reloaded")
 
         
     }
@@ -218,7 +239,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let gameName = snapshot.key
                 
-                if snapshot.key == Constants.descrip {
+                if snapshot.key == K.descrip {
                     
                     let game = snapshot.value! as! NSDictionary
                     self.lotteryLocation["abbrev"] = game["Abbrev"] as? String
@@ -253,7 +274,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let gameName = snapshot.key
     
-                if snapshot.key == Constants.descrip {
+                if snapshot.key == K.descrip {
                     
                     let game = snapshot.value! as! NSDictionary
                     self.lotteryLocation["abbrev"] = game["Abbrev"] as? String
@@ -289,7 +310,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let gameName = snapshot.key
                 
-                if snapshot.key == Constants.descrip {
+                if snapshot.key == K.descrip {
                     
                     let game = snapshot.value! as! NSDictionary
                     self.lotteryLocation["abbrev"] = game["Abbrev"] as? String
@@ -396,7 +417,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         setTableHeader(segmentedControl)
         tableView.reloadData()
-        saveSegmentOptionToUserDefaults(segmentedControl)
+        //saveSegmentOptionToUserDefaults(segmentedControl: segmentedControl)
+        SharedServices.sharedInstance.saveToUserDefaultsThe(value: segmentedControl.selectedSegmentIndex, forKey: K.segmentNumKey)
     
     }
     
@@ -440,26 +462,46 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     }
     
-    func saveSegmentOptionToUserDefaults(_ segmentedControl: UISegmentedControl) {
+    // MARK: User Defaults
+
     
+    /*func saveSegmentOptionToUserDefaults(segmentedControl: UISegmentedControl) {
+        
         let defaults = UserDefaults.standard
-        defaults.set(segmentedControl.selectedSegmentIndex, forKey: "SegmentValue")
+        defaults.set(segmentedControl.selectedSegmentIndex, forKey: Constants.segmentNumKey)
     }
     
-    func getSegmentOptionFromUserDefaults() -> Int {
+    func getSegmentOptionFromUserDefaults() -> Int? {
         let defaults = UserDefaults.standard
         return defaults.integer(forKey: "SegmentValue")
     }
-    
-    func priceFromInt(_ num: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.positiveFormat = "$#,##0"
-        formatter.zeroSymbol = ""
-        // formatter.locale = NSLocale.currentLocale()  // This is the default
-        return(formatter.string(from: NSNumber(value: num)))!       // "$123.44"
-    }
 
+    func saveLocationToUserDefaults(location: CLPlacemark) {
+    
+        let defaults = UserDefaults.standard
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: location)
+        defaults.set(encodedData, forKey: "Location")
+        //print("end of save location")
+        //defaults.set(location, forKey: "Location")
+    }
+    
+    func getLocationFromUserDefaults() -> CLPlacemark? {
+        
+        let defaults = UserDefaults.standard
+        let location = defaults.object(forKey: "Location") as? NSData
+        var decodedLocation: CLPlacemark?
+        if location != nil {
+            decodedLocation = NSKeyedUnarchiver.unarchiveObject(with: location as! Data) as! CLPlacemark?
+        }
+        //let defaults = UserDefaults.standard
+        //return defaults.string(forKey: "Location")!
+        //print("loc = \(decodedLocation?.administrativeArea)")
+        return decodedLocation
+    }*/
+    
+    
+    // MARK: Add games
+    
     func addGameSortedByOddsToWin (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
         
         let thisOddsToWin = sortedByOddsToWin(name:gameName,oddsToWin:thisGame.oddsToWin)
@@ -468,7 +510,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // if the new Odds to win > any in the existing array
         
-        if gamesByOddsToWin.isEmpty || (thisGame.oddsToWin >= gamesByOddsToWin.last?.oddsToWin) {
+        if gamesByOddsToWin.isEmpty || (thisGame.oddsToWin >= (gamesByOddsToWin.last?.oddsToWin)!) {
             
             gamesByOddsToWin.append(thisOddsToWin)
             rowNumber = self.gamesByOddsToWin.count-1
@@ -492,7 +534,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         var rowNumber = 0
         
         // if the new prize > any in the existing array
-        if  gamesByTopPrize.isEmpty || (thisGame.topPrize <= gamesByTopPrize.last?.topPrize) {
+        if  gamesByTopPrize.isEmpty || (thisGame.topPrize <= (gamesByTopPrize.last?.topPrize)!) {
             gamesByTopPrize.append(thisTopPrize)
             rowNumber = self.gamesByTopPrize.count-1
         } else {
@@ -515,7 +557,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // if the new prize > any in the existing array
         
-        if gamesByPayout.isEmpty || (thisGame.totalWinnings <= gamesByPayout.last?.payout) {
+        if gamesByPayout.isEmpty || (thisGame.totalWinnings <= (gamesByPayout.last?.payout)!) {
             gamesByPayout.append(thisPayout)
             rowNumber = self.gamesByPayout.count-1
         } else {
@@ -531,6 +573,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    // MARK: Change games
+    
     func changeGameSortedByOddsToWin (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
         
         let currentIndex = gamesByOddsToWin.index(where: {$0.name == gameName})                  // find index of current row
@@ -589,6 +633,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
        
     }
 
+    // MARK: Move games
+    
     func removeGameSortedByOddsToWin (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
         
         let rowNumber = gamesByOddsToWin.index(where: {$0.name == gameName})
@@ -619,6 +665,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    // MARK: Create game
+    
     func createGameObjectUsingSnapshot(_ snapshot: FIRDataSnapshot) -> gameData {
         
         // Note: Need to downcast all JSON fields. "Segemention fault: 11" error means mismatch between var definition and JSON definition
@@ -638,6 +686,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return thisGame
     }
     
+    // MARK: Convenience funcs
     
+    func priceFromInt(_ num: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.positiveFormat = "$#,##0"
+        formatter.zeroSymbol = ""
+        // formatter.locale = NSLocale.currentLocale()  // This is the default
+        return(formatter.string(from: NSNumber(value: num)))!       // "$123.44"
+    }
     
 }
