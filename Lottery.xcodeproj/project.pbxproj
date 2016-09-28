@@ -23,6 +23,7 @@
 		D05347681D98D24100628586 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05347671D98D24100628586 /* LocationTableViewCell.swift */; };
 		D053476A1D99828900628586 /* SharedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05347691D99828900628586 /* SharedServices.swift */; };
 		D0A156EE1D87B962006031BC /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A156ED1D87B962006031BC /* K.swift */; };
+		D0AFC01F1D9AF9800010755D /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AFC01E1D9AF9800010755D /* SetLocationViewController.swift */; };
 		D0E09D7D1D81A3CA00147A10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		D05347671D98D24100628586 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		D05347691D99828900628586 /* SharedServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedServices.swift; sourceTree = "<group>"; };
 		D0A156ED1D87B962006031BC /* K.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		D0AFC01E1D9AF9800010755D /* SetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
 		D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lottery/Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 				D00A2A151D7B773E00C1E1C0 /* ViewController.swift */,
 				D00A2A481D7E696700C1E1C0 /* GameViewController.swift */,
 				D05347651D98CFDF00628586 /* SettingsViewController.swift */,
+				D0AFC01E1D9AF9800010755D /* SetLocationViewController.swift */,
 				D05347691D99828900628586 /* SharedServices.swift */,
 				D0A156ED1D87B962006031BC /* K.swift */,
 			);
@@ -375,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0AFC01F1D9AF9800010755D /* SetLocationViewController.swift in Sources */,
 				D00A2A491D7E696700C1E1C0 /* GameViewController.swift in Sources */,
 				D00A2A161D7B773E00C1E1C0 /* ViewController.swift in Sources */,
 				D00A2A141D7B773E00C1E1C0 /* AppDelegate.swift in Sources */,

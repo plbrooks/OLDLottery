@@ -68,15 +68,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var ref: FIRDatabaseReference!
 
-   //var refHandleCountries: FIRDatabaseHandle!
-    
     var refHandleAddGames: FIRDatabaseHandle!
     var refHandleRemoveGames: FIRDatabaseHandle!
     var refHandleChangeGames: FIRDatabaseHandle!
     
-    //var refHandleGameDetail: FIRDatabaseHandle!
-    
-    var storageRef: FIRStorageReference!
+    //var storageRef: FIRStorageReference!
     //var remoteConfig: FIRRemoteConfig!
     
     class gameData {
@@ -164,41 +160,24 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource    = self
         
         ref = FIRDatabase.database().reference()
-        //FIRDatabase.database().persistenceEnabled = true
-        
-        loadData()
-
-        
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
-        
-        segmentedControl.selectedSegmentIndex = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) as? Int ?? 0
-        /*if let segmentNum = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) {
-            segmentedControl.selectedSegmentIndex = segmentNum as! Int
-        }
-        else {
-            
-            segmentedControl.selectedSegmentIndex = 0
-        }*/
-        
-        
-        
-        
         setTableHeader(segmentedControl)
+        segmentedControl.selectedSegmentIndex = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.segmentNumKey) as? Int ?? 0
         
-        tableView.reloadData()
-        //print("data reloaded")
-
+        loadDataFromFirebase()
         
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        
         super.viewDidDisappear(animated)
+        ref.removeAllObservers()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -208,6 +187,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
    
     override func viewWillLayoutSubviews() {
+        
         super.viewWillLayoutSubviews()
         if let header = tableHeaderView {
             
@@ -216,16 +196,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // when called?
-    deinit {
-        
-        self.ref.child(lotteryLocation["country"]!).removeObserver(withHandle: refHandleAddGames)
-        self.ref.child(lotteryLocation["country"]!).removeObserver(withHandle: refHandleChangeGames)
-        self.ref.child(lotteryLocation["country"]!).removeObserver(withHandle: refHandleRemoveGames)
-        
-    }
-    
-    func loadData() {  // first inititialization
+    func loadDataFromFirebase() {  // first inititialization
        
         // Listen for new Country in the Firebase database
         
