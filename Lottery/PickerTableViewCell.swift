@@ -10,6 +10,9 @@ import UIKit
 
 class PickerTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leftPicker: UIPickerView!
+    @IBOutlet weak var rightPicker: UIPickerView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
