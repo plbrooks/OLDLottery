@@ -85,7 +85,7 @@ class SetLocationViewController: UIViewController {
             }
             
         }) { (error) in
-            print(error.localizedDescription)
+            print("snapshot error = \(error.localizedDescription)")
         }
         
     }

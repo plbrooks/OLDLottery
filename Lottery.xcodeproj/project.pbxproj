@@ -24,6 +24,7 @@
 		D053476A1D99828900628586 /* SharedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05347691D99828900628586 /* SharedServices.swift */; };
 		D0A156EE1D87B962006031BC /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A156ED1D87B962006031BC /* K.swift */; };
 		D0AFC01F1D9AF9800010755D /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AFC01E1D9AF9800010755D /* SetLocationViewController.swift */; };
+		D0AFC0211D9C40860010755D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AFC0201D9C40860010755D /* PickerTableViewCell.swift */; };
 		D0E09D7D1D81A3CA00147A10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		D05347691D99828900628586 /* SharedServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedServices.swift; sourceTree = "<group>"; };
 		D0A156ED1D87B962006031BC /* K.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		D0AFC01E1D9AF9800010755D /* SetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
+		D0AFC0201D9C40860010755D /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		D0E09D7C1D81A3CA00147A10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4EA2733F99C75E137F78336 /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lottery/Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				D05347631D98CE8900628586 /* NameTableViewCell.swift */,
 				D05347671D98D24100628586 /* LocationTableViewCell.swift */,
 				D00A2A461D7E667000C1E1C0 /* GameTableViewCell.swift */,
+				D0AFC0201D9C40860010755D /* PickerTableViewCell.swift */,
 				D00A2A1D1D7B773E00C1E1C0 /* Assets.xcassets */,
 				D00A2A1F1D7B773E00C1E1C0 /* LaunchScreen.storyboard */,
 				D00A2A221D7B773E00C1E1C0 /* Info.plist */,
@@ -199,12 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D00A2A3B1D7B773E00C1E1C0 /* Build configuration list for PBXNativeTarget "Lottery" */;
 			buildPhases = (
-				71DB4176F0500977E4309983 /* 📦 Check Pods Manifest.lock */,
+				71DB4176F0500977E4309983 /* [CP] Check Pods Manifest.lock */,
 				D00A2A0C1D7B773E00C1E1C0 /* Sources */,
 				D00A2A0D1D7B773E00C1E1C0 /* Frameworks */,
 				D00A2A0E1D7B773E00C1E1C0 /* Resources */,
-				8413C5260BA1C39AA69B241A /* 📦 Embed Pods Frameworks */,
-				8F834F77508DCE9DA34DA0C6 /* 📦 Copy Pods Resources */,
+				8413C5260BA1C39AA69B241A /* [CP] Embed Pods Frameworks */,
+				8F834F77508DCE9DA34DA0C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,15 +266,18 @@
 				TargetAttributes = {
 					D00A2A0F1D7B773E00C1E1C0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = G64A6DTM2A;
 						LastSwiftMigration = 0800;
 					};
 					D00A2A261D7B773E00C1E1C0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = G64A6DTM2A;
 						LastSwiftMigration = 0800;
 						TestTargetID = D00A2A0F1D7B773E00C1E1C0;
 					};
 					D00A2A311D7B773E00C1E1C0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = G64A6DTM2A;
 						LastSwiftMigration = 0800;
 						TestTargetID = D00A2A0F1D7B773E00C1E1C0;
 					};
@@ -326,29 +332,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		71DB4176F0500977E4309983 /* 📦 Check Pods Manifest.lock */ = {
+		71DB4176F0500977E4309983 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8413C5260BA1C39AA69B241A /* 📦 Embed Pods Frameworks */ = {
+		8413C5260BA1C39AA69B241A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,14 +362,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lottery/Pods-Lottery-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F834F77508DCE9DA34DA0C6 /* 📦 Copy Pods Resources */ = {
+		8F834F77508DCE9DA34DA0C6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0AFC01F1D9AF9800010755D /* SetLocationViewController.swift in Sources */,
+				D0AFC0211D9C40860010755D /* PickerTableViewCell.swift in Sources */,
 				D00A2A491D7E696700C1E1C0 /* GameViewController.swift in Sources */,
 				D00A2A161D7B773E00C1E1C0 /* ViewController.swift in Sources */,
 				D00A2A141D7B773E00C1E1C0 /* AppDelegate.swift in Sources */,
@@ -466,6 +473,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = G64A6DTM2A;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -514,6 +522,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = G64A6DTM2A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

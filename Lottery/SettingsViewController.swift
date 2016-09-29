@@ -9,17 +9,60 @@
 import UIKit
 import CoreLocation
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+   
+    
+    var pickerData = ("A")
     
     override func viewDidLoad() {
         
-        super.viewDidLoad()
+    super.viewDidLoad()
+        //self.picker.dataSource = self
+        //self.picker.delegate = self;
         //textField.delegate = self
 
     }
 
+    // The number of columns of data
+    
+    func numberOfComponentsInPickerVIew(_: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func numberOfComponents(in: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //return pickerData.count
+        return 3
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //return pickerData[row]
+        return "A"
+    }
+    
+    // Catpure the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        var height:CGFloat = 44 // Default
+        
+        if indexPath.row == 1 {
+            height = 126
+        }
+        
+        return height
+    }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,7 +73,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 2
+        return 3
         
     }
     
@@ -53,6 +96,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
 
         case 1:
+            
+            cell = tableView.dequeueReusableCell(withIdentifier: K.pickerCellName, for: indexPath) as! PickerTableViewCell
+            //let savedName = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.userNameKey) as? String
+            //(cell as! PickerTableViewCell).leftPicker.
+            //cell.textLabel?.text = "HIHO"
+
+        case 2:
             
             cell = tableView.dequeueReusableCell(withIdentifier: K.userNameCellName, for: indexPath) as! NameTableViewCell
             let savedName = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.userNameKey) as? String

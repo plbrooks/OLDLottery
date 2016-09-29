@@ -20,6 +20,7 @@ class K: NSObject {
     // UITableViewCell names and defaults
     
     static let locationCellName = "LocationTableViewCell"
+    static let pickerCellName = "PickerTableViewCell"
     static let userNameCellName = "NameTableViewCell"
     static let defaultLocationTextInCell = "Your Location"
     
