@@ -176,7 +176,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidDisappear(_ animated: Bool) {
         
         super.viewDidDisappear(animated)
-        ref.removeAllObservers()
+        ref.removeObserver(withHandle: refHandleAddGames)
+        ref.removeObserver(withHandle: refHandleChangeGames)
+        ref.removeObserver(withHandle: refHandleRemoveGames)
         
     }
     
@@ -275,7 +277,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(error.localizedDescription)
         }
     
-        refHandleChangeGames = self.ref.child(refKey).observe(.childRemoved, with: { (snapshot) -> Void in
+        refHandleRemoveGames = self.ref.child(refKey).observe(.childRemoved, with: { (snapshot) -> Void in
             
             if snapshot.exists() {
                 
@@ -618,6 +620,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func removeGameSortedByTopPrize (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
+        
         let rowNumber = gamesByTopPrize.index(where: {$0.name == gameName})
         gamesByTopPrize.remove(at: rowNumber!)
         
@@ -627,6 +630,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func removeGameSortedByPayout (_ thisGame: gameData, gameName: String, tableView: UITableView, segmentIndex: Int) {
+        
         let rowNumber = gamesByPayout.index(where: {$0.name == gameName})
         gamesByPayout.remove(at: rowNumber!)
         

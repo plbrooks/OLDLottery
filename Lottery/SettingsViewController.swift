@@ -8,49 +8,150 @@
 
 import UIKit
 import CoreLocation
+import Firebase
+//import FirebaseDatabaseUI
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
    
+    var ref: FIRDatabaseReference!
+    var refHandleGetLocations: FIRDatabaseHandle!
+    //var dataSource: FirebaseTableViewDataSource!
     
-    var pickerData = ("A")
+    var locationDict = [String: [String]]()
     
     override func viewDidLoad() {
         
-    super.viewDidLoad()
-        //self.picker.dataSource = self
-        //self.picker.delegate = self;
-        //textField.delegate = self
+        super.viewDidLoad()
+        ref = FIRDatabase.database().reference()
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        loadDataFromFirebase()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        ref.removeObserver(withHandle: refHandleGetLocations)
+        
+    }
+    
+    func loadDataFromFirebase() {  // first inititialization
+        
+        // Listen for new Country in the Firebase database
+        
+        let refKey = "LOCATIONS"
+        
+        refHandleGetLocations = self.ref.child(refKey).observe(.childAdded, with: { (snapshot) -> Void in
+            
+            if snapshot.exists() {
+                
+                let key = snapshot.key
+                
+                let data = snapshot.value as! NSDictionary
+                let dataAsString = data as! [String: Any]
+    
+                if (dataAsString.count == 1) && (dataAsString.index(forKey: "NONE") != nil) {
+                    self.locationDict[key] = []
+                } else {
+                    self.locationDict[key] = data.allKeys as? [String]
+                }
+                
+                let path = IndexPath(row: 1, section: 0)
+                self.tableView.reloadRows(at: [path], with: UITableViewRowAnimation.top)
+                
+            } else {
+                
+                print("no snapshot")
+                return
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    
     // The number of columns of data
     
-    func numberOfComponentsInPickerVIew(_: UIPickerView) -> Int {
-        return 1
-    }
-    
     func numberOfComponents(in: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //return pickerData.count
-        return 3
+        
+        var numberOfRows = 0
+        
+        switch component {
+        case 0:
+            numberOfRows = locationDict.count                               // count = # of countries
+        case 1:
+            if locationDict.count > 0 {                                     // there is a country
+                
+                let countryRow = pickerView.selectedRow(inComponent: 0)     // # of selected Country row
+                let countryName = countryNameOfRow(countryRow, usingLocationDict: locationDict)    // name of selected country
+                let divisions = locationDict[countryName]                          // list of divisions for the country
+                numberOfRows = (divisions?.count)!                          // count of the divisions if any
+
+            }
+        default:
+            break
+    
+        }
+        return numberOfRows
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //return pickerData[row]
-        return "A"
+        
+        var rowTitle = ""
+        
+        
+        if locationDict.count > 0 {             // there is a country
+            
+            
+            switch component {
+            case 0:
+                let sortedCountries = Array(locationDict.keys).sorted(by: <)
+                rowTitle = sortedCountries[row]
+                break
+            case 1:
+                
+                let selectedCountryRow = pickerView.selectedRow(inComponent: 0)
+                let countryName = countryNameOfRow(selectedCountryRow, usingLocationDict: locationDict)
+                if Array(locationDict[countryName]!).count > 0 {        // there are divisions assoc. with the country
+                    
+                    let sortedDivisions = Array(locationDict[countryName]!).sorted(by: <)
+                    rowTitle = sortedDivisions[row]
+                    
+                }
+            default:
+                break
+                
+            }
+        }
+        return rowTitle
     }
     
     // Catpure the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
+        switch component {
+        case 0:
+            pickerView.reloadComponent(1)
+            break
+        case 1:
+            break
+        default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -101,6 +202,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             //let savedName = SharedServices.sharedInstance.getValueFromUserDefaultsFor(key: K.userNameKey) as? String
             //(cell as! PickerTableViewCell).leftPicker.
             //cell.textLabel?.text = "HIHO"
+            (cell as! PickerTableViewCell).leftPicker.reloadAllComponents()
+
 
         case 2:
             
@@ -136,6 +239,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     /*func textFieldDidBeginEditing(_ textField: UITextField) {
         print("Text field did begin editting")
     }*/
+    
+    
+    func countryNameOfRow(_ ofTitleRow: Int, usingLocationDict: [String: [String]] ) -> String {
+        var name = ""
+        
+        if usingLocationDict.count > 0 {
+            
+            let sortedCountries = Array(usingLocationDict.keys).sorted(by: <)
+            name = sortedCountries[ofTitleRow]     // selected Country
+            
+        }
+        
+        return name
+    }
     
     
 }
