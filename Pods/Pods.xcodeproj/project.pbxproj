@@ -1,0 +1,791 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D78044BF9234AD40C6AFFD5BFDF1905 /* SwiftLocation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7584EDC2C64BE3A7DD248DC6B96EA3A /* SwiftLocation-dummy.m */; };
+		32F9CAEFFDB10F5752091EC0C76AC3FD /* GeoRegionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C207073E19B474099ADD1C127D4B028 /* GeoRegionRequest.swift */; };
+		3D43EBAD94E3C888EBC9FA4829B70052 /* Pods-Lottery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC3D3B8578F6260EB1E59129B8A6DA /* Pods-Lottery-dummy.m */; };
+		44B5A29EFAD5D508F29524B0E2DD53E2 /* LocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0A4654720034DBAE71945274374CF /* LocationRequest.swift */; };
+		47039ADE17AFA6038979DE821DFAA62E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEC0201188AFCCCCBABA96D1AB8B625 /* MapKit.framework */; };
+		586C30F0BB948F430768AE62F21F2918 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395775C8D05F39BCE76892CBBFADB52B /* Foundation.framework */; };
+		66C9188C13D34DCE1F97700EFD5A7076 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CF998041FF84C37C62D066ECA65E3 /* Commons.swift */; };
+		70A98B1AFF97B1F4B9F621AFADDAE0F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395775C8D05F39BCE76892CBBFADB52B /* Foundation.framework */; };
+		74B5C71903791D6AEA8CCC1D35CA26D9 /* BeaconsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D2431AA369438F1A8EFABCDFD35ED /* BeaconsManager.swift */; };
+		7BB70DA50C77021C5BEBE6E983406AB6 /* SwiftLocation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C788B760D3B5992FCF68BCF5249D48F3 /* SwiftLocation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83AB75210130C54353E5A7C0CC5CB475 /* BeaconRegionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1241032318FB2483889308D06750E8 /* BeaconRegionRequest.swift */; };
+		B271235EADDB7D89A957B4BA327170EC /* VisitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEF154DCE8996A279A5EAED9AC285D /* VisitRequest.swift */; };
+		C62FD111F8D9E961AA12F35399978CC0 /* BeaconAdvertiseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA4C2A01C3363C2FCCFF73ED6C1EDFB /* BeaconAdvertiseRequest.swift */; };
+		C7BB25CD41CD5A525316D268FB67E46A /* HeadingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56142C45E12AEC9CA70962CA73E09314 /* HeadingRequest.swift */; };
+		D6D9248ED70366DE29138211298115C7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541F0D685CCF7D464F0CBE7B91B4108 /* LocationManager.swift */; };
+		E443EB2D5E12E92598A47D73C3AC68B0 /* Pods-Lottery-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 072731FD2B2F8D19FAB3719A3864A427 /* Pods-Lottery-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F12DCFF6D036635013DB1F12413F8BE9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE989A02C8C30D6F9193A51D9067C18 /* CoreLocation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EFA76389CF8DE8FDD4000C35E2A29E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6BB509DEADDF3C03EEFE1F662CE830D;
+			remoteInfo = SwiftLocation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		072731FD2B2F8D19FAB3719A3864A427 /* Pods-Lottery-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Lottery-umbrella.h"; sourceTree = "<group>"; };
+		0BEC0201188AFCCCCBABA96D1AB8B625 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		10DE68818938476E86983D25B32E5E2D /* Pods-Lottery-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Lottery-acknowledgements.plist"; sourceTree = "<group>"; };
+		2A448F88527A555B0ED6414AFEEAA4E3 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
+		3125DFCCB0ADCDB264D1186C8787E579 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		395775C8D05F39BCE76892CBBFADB52B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3BE989A02C8C30D6F9193A51D9067C18 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		432D2431AA369438F1A8EFABCDFD35ED /* BeaconsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeaconsManager.swift; path = src/BeaconsManager.swift; sourceTree = "<group>"; };
+		4AF26F7E6D0028C549271CCEF9A1F14D /* Pods-Lottery-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lottery-resources.sh"; sourceTree = "<group>"; };
+		4C207073E19B474099ADD1C127D4B028 /* GeoRegionRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoRegionRequest.swift; path = src/GeoRegionRequest.swift; sourceTree = "<group>"; };
+		53B2EAB1D4FACFEA2E1943B47ED348B3 /* Pods-Lottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lottery.release.xcconfig"; sourceTree = "<group>"; };
+		56142C45E12AEC9CA70962CA73E09314 /* HeadingRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeadingRequest.swift; path = src/HeadingRequest.swift; sourceTree = "<group>"; };
+		5ADEF154DCE8996A279A5EAED9AC285D /* VisitRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VisitRequest.swift; path = src/VisitRequest.swift; sourceTree = "<group>"; };
+		6FA4C2A01C3363C2FCCFF73ED6C1EDFB /* BeaconAdvertiseRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeaconAdvertiseRequest.swift; path = src/BeaconAdvertiseRequest.swift; sourceTree = "<group>"; };
+		6FAFC0893920F2E85F8F3EA090310DD3 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		752B97B241FCBCF4C9D03B894D2E6B2F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		84298AC9AA4C3FC8B561B64C66E8C679 /* Pods-Lottery-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Lottery-acknowledgements.markdown"; sourceTree = "<group>"; };
+		85FEEF5DEF9E794238E164D36F44DCA8 /* SwiftLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		888649B09400EC5501A29E63DD87BC67 /* Pods-Lottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lottery.debug.xcconfig"; sourceTree = "<group>"; };
+		8F68BAAB1578F21933B37C9B6D40774D /* Pods-Lottery-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lottery-frameworks.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93E75F202CCEEF4F31070AA748542B91 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
+		9BB0A4654720034DBAE71945274374CF /* LocationRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocationRequest.swift; path = src/LocationRequest.swift; sourceTree = "<group>"; };
+		9E28272375606CEBECEA950F5CAD58B9 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		A756F6A0DFB73784CF98A4644A53108B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9719C4D51326DAEBCE4CC70BA629F21 /* Pods-Lottery.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Lottery.modulemap"; sourceTree = "<group>"; };
+		ADEF39824D933CCA7B7BD003BB11711D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		B7584EDC2C64BE3A7DD248DC6B96EA3A /* SwiftLocation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftLocation-dummy.m"; sourceTree = "<group>"; };
+		B76315BD7BE38ADE57BDFB2346AE47D1 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
+		B76511FA298CA3D18FEA9703F9EF9B4F /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
+		B81CF998041FF84C37C62D066ECA65E3 /* Commons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = src/Commons.swift; sourceTree = "<group>"; };
+		B9AE436395105A6AC6C5D3131340D40B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		C788B760D3B5992FCF68BCF5249D48F3 /* SwiftLocation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLocation-umbrella.h"; sourceTree = "<group>"; };
+		CABC706026FB92F366EBDF8204CF86F8 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		CAE99032F65E655F195A33F2990D100F /* SwiftLocation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLocation.xcconfig; sourceTree = "<group>"; };
+		CE9C4C2D546D1DC8AA637EFE3066A3E5 /* SwiftLocation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftLocation.modulemap; sourceTree = "<group>"; };
+		D541F0D685CCF7D464F0CBE7B91B4108 /* LocationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = src/LocationManager.swift; sourceTree = "<group>"; };
+		E3641A7034B7E8CF3A162CD7164138A0 /* Pods_Lottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E88ED3CA709B4F4C0568A4BEB92FB8B6 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
+		ECBC3D3B8578F6260EB1E59129B8A6DA /* Pods-Lottery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Lottery-dummy.m"; sourceTree = "<group>"; };
+		EE1241032318FB2483889308D06750E8 /* BeaconRegionRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeaconRegionRequest.swift; path = src/BeaconRegionRequest.swift; sourceTree = "<group>"; };
+		EFC720CE61D89620BF4B27F4AA67FD1A /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrash.framework; path = Frameworks/frameworks/FirebaseCrash.framework; sourceTree = "<group>"; };
+		F286039BA66B759A6FBB7258F5BF357B /* SwiftLocation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLocation-prefix.pch"; sourceTree = "<group>"; };
+		FC726AA01EE21C3AA25D9D9236D02DD4 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		036EBE408F31FA60C0B8CC620CBB988A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70A98B1AFF97B1F4B9F621AFADDAE0F2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D7FFE20678D8010B19F7AA57AB267FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12DCFF6D036635013DB1F12413F8BE9 /* CoreLocation.framework in Frameworks */,
+				586C30F0BB948F430768AE62F21F2918 /* Foundation.framework in Frameworks */,
+				47039ADE17AFA6038979DE821DFAA62E /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00C634013E41AFE0D957048850A0E60B /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				3E02239F52851DCFCDCD757063233BD1 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42458ECF2596655F89B2F885FEC91AF7 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12AD19BD3C4DEFDC077E2B7D3831F41C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CABC706026FB92F366EBDF8204CF86F8 /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22E1BFE627D6B6CE0C54F3F1F43CED6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93E75F202CCEEF4F31070AA748542B91 /* FirebaseStorage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B7D0AE9B7445AEAEBEA04D544CB136B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ABBA56597E2CB43E80DD8BFC6B766CC3 /* Firebase */,
+				9255FCD869E27883C42F265F7B3B3062 /* FirebaseAnalytics */,
+				CE9666FDD37834028E15A2B251D1FE86 /* FirebaseAuth */,
+				C97F5555666512FB1A111ACA3E5545AD /* FirebaseCrash */,
+				B311B2C1F3F649580840D50EE0213B05 /* FirebaseDatabase */,
+				B5719A90111B11C3D3B65322FEF57A6D /* FirebaseInstanceID */,
+				EA6165D1640239758BE1375BA7E71F91 /* FirebaseStorage */,
+				B8F63B2B0724FBF6BB8A50EB765667E4 /* Google-Mobile-Ads-SDK */,
+				D213E1E254C77901D03573EACE936D47 /* GoogleInterchangeUtilities */,
+				83B58D11625F6343BC2D7F8459735CC0 /* GoogleNetworkingUtilities */,
+				00C634013E41AFE0D957048850A0E60B /* GoogleSymbolUtilities */,
+				D3FB355B997E3A8BD7AA565F6E33F999 /* GoogleUtilities */,
+				D3419FC1BDC4DD2424037F8EEF5177DD /* SwiftLocation */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E02239F52851DCFCDCD757063233BD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FAFC0893920F2E85F8F3EA090310DD3 /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		42458ECF2596655F89B2F885FEC91AF7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3BE989A02C8C30D6F9193A51D9067C18 /* CoreLocation.framework */,
+				395775C8D05F39BCE76892CBBFADB52B /* Foundation.framework */,
+				0BEC0201188AFCCCCBABA96D1AB8B625 /* MapKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5125E2AA78C3E19CF02F1D54A579C160 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA05710A45B166C664093518F0AC5E2E /* Pods-Lottery */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5CC01E01026609902AA64D8512371B96 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				E88ED3CA709B4F4C0568A4BEB92FB8B6 /* Firebase.h */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		6E805DC194EE9C2FCE529F4032118839 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				752B97B241FCBCF4C9D03B894D2E6B2F /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				2B7D0AE9B7445AEAEBEA04D544CB136B /* Pods */,
+				ADC948A79354491E33A780FEE92DAB32 /* Products */,
+				5125E2AA78C3E19CF02F1D54A579C160 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		802DC08090C1A830526D5B59410A0B87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B76511FA298CA3D18FEA9703F9EF9B4F /* FirebaseAuth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83B58D11625F6343BC2D7F8459735CC0 /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				908E8195A0CDEE5A79A58A97575C9F5F /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		908E8195A0CDEE5A79A58A97575C9F5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A448F88527A555B0ED6414AFEEAA4E3 /* GoogleNetworkingUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9255FCD869E27883C42F265F7B3B3062 /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				CC671127B797BF34281425E5CEB73C49 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		9EC542C28F6AB5793D4B5EFF92D88755 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9AE436395105A6AC6C5D3131340D40B /* FirebaseDatabase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A08343ECB33C52BE5DDA69A64607090E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC726AA01EE21C3AA25D9D9236D02DD4 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABBA56597E2CB43E80DD8BFC6B766CC3 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				5CC01E01026609902AA64D8512371B96 /* Analytics */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		ADC948A79354491E33A780FEE92DAB32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3641A7034B7E8CF3A162CD7164138A0 /* Pods_Lottery.framework */,
+				85FEEF5DEF9E794238E164D36F44DCA8 /* SwiftLocation.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B311B2C1F3F649580840D50EE0213B05 /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				9EC542C28F6AB5793D4B5EFF92D88755 /* Frameworks */,
+			);
+			path = FirebaseDatabase;
+			sourceTree = "<group>";
+		};
+		B5719A90111B11C3D3B65322FEF57A6D /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				B76315BD7BE38ADE57BDFB2346AE47D1 /* FIRInstanceID.h */,
+				A08343ECB33C52BE5DDA69A64607090E /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		B8F63B2B0724FBF6BB8A50EB765667E4 /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				EF6429DCD6BD34EB879414BBD50D3F64 /* Frameworks */,
+			);
+			path = "Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		C8F66703B1B84C2F7B58F1EFDB091918 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFC720CE61D89620BF4B27F4AA67FD1A /* FirebaseCrash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C97F5555666512FB1A111ACA3E5545AD /* FirebaseCrash */ = {
+			isa = PBXGroup;
+			children = (
+				C8F66703B1B84C2F7B58F1EFDB091918 /* Frameworks */,
+			);
+			path = FirebaseCrash;
+			sourceTree = "<group>";
+		};
+		CC671127B797BF34281425E5CEB73C49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E28272375606CEBECEA950F5CAD58B9 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE9666FDD37834028E15A2B251D1FE86 /* FirebaseAuth */ = {
+			isa = PBXGroup;
+			children = (
+				802DC08090C1A830526D5B59410A0B87 /* Frameworks */,
+			);
+			path = FirebaseAuth;
+			sourceTree = "<group>";
+		};
+		D213E1E254C77901D03573EACE936D47 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				6E805DC194EE9C2FCE529F4032118839 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		D3419FC1BDC4DD2424037F8EEF5177DD /* SwiftLocation */ = {
+			isa = PBXGroup;
+			children = (
+				6FA4C2A01C3363C2FCCFF73ED6C1EDFB /* BeaconAdvertiseRequest.swift */,
+				EE1241032318FB2483889308D06750E8 /* BeaconRegionRequest.swift */,
+				432D2431AA369438F1A8EFABCDFD35ED /* BeaconsManager.swift */,
+				B81CF998041FF84C37C62D066ECA65E3 /* Commons.swift */,
+				4C207073E19B474099ADD1C127D4B028 /* GeoRegionRequest.swift */,
+				56142C45E12AEC9CA70962CA73E09314 /* HeadingRequest.swift */,
+				D541F0D685CCF7D464F0CBE7B91B4108 /* LocationManager.swift */,
+				9BB0A4654720034DBAE71945274374CF /* LocationRequest.swift */,
+				5ADEF154DCE8996A279A5EAED9AC285D /* VisitRequest.swift */,
+				F162968D284E39EB76523C4F7DA4F520 /* Support Files */,
+			);
+			path = SwiftLocation;
+			sourceTree = "<group>";
+		};
+		D3FB355B997E3A8BD7AA565F6E33F999 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				12AD19BD3C4DEFDC077E2B7D3831F41C /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		EA05710A45B166C664093518F0AC5E2E /* Pods-Lottery */ = {
+			isa = PBXGroup;
+			children = (
+				3125DFCCB0ADCDB264D1186C8787E579 /* Info.plist */,
+				A9719C4D51326DAEBCE4CC70BA629F21 /* Pods-Lottery.modulemap */,
+				84298AC9AA4C3FC8B561B64C66E8C679 /* Pods-Lottery-acknowledgements.markdown */,
+				10DE68818938476E86983D25B32E5E2D /* Pods-Lottery-acknowledgements.plist */,
+				ECBC3D3B8578F6260EB1E59129B8A6DA /* Pods-Lottery-dummy.m */,
+				8F68BAAB1578F21933B37C9B6D40774D /* Pods-Lottery-frameworks.sh */,
+				4AF26F7E6D0028C549271CCEF9A1F14D /* Pods-Lottery-resources.sh */,
+				072731FD2B2F8D19FAB3719A3864A427 /* Pods-Lottery-umbrella.h */,
+				888649B09400EC5501A29E63DD87BC67 /* Pods-Lottery.debug.xcconfig */,
+				53B2EAB1D4FACFEA2E1943B47ED348B3 /* Pods-Lottery.release.xcconfig */,
+			);
+			name = "Pods-Lottery";
+			path = "Target Support Files/Pods-Lottery";
+			sourceTree = "<group>";
+		};
+		EA6165D1640239758BE1375BA7E71F91 /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				22E1BFE627D6B6CE0C54F3F1F43CED6A /* Frameworks */,
+			);
+			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
+		EF6429DCD6BD34EB879414BBD50D3F64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADEF39824D933CCA7B7BD003BB11711D /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F162968D284E39EB76523C4F7DA4F520 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A756F6A0DFB73784CF98A4644A53108B /* Info.plist */,
+				CE9C4C2D546D1DC8AA637EFE3066A3E5 /* SwiftLocation.modulemap */,
+				CAE99032F65E655F195A33F2990D100F /* SwiftLocation.xcconfig */,
+				B7584EDC2C64BE3A7DD248DC6B96EA3A /* SwiftLocation-dummy.m */,
+				F286039BA66B759A6FBB7258F5BF357B /* SwiftLocation-prefix.pch */,
+				C788B760D3B5992FCF68BCF5249D48F3 /* SwiftLocation-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLocation";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D908555FD0DE2904CC00262368ED04B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BB70DA50C77021C5BEBE6E983406AB6 /* SwiftLocation-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B964E35B409B44C595F35A6E4AB36FAD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E443EB2D5E12E92598A47D73C3AC68B0 /* Pods-Lottery-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		59A4DE71A9968BADBEA2A6359C10FDC6 /* Pods-Lottery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99C9D53AD6448508946208EBFF428926 /* Build configuration list for PBXNativeTarget "Pods-Lottery" */;
+			buildPhases = (
+				FD5E14EE583F6F4968EC65CD81D0B1E7 /* Sources */,
+				036EBE408F31FA60C0B8CC620CBB988A /* Frameworks */,
+				B964E35B409B44C595F35A6E4AB36FAD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19535CB28A0254B4A143996D910EFDAA /* PBXTargetDependency */,
+			);
+			name = "Pods-Lottery";
+			productName = "Pods-Lottery";
+			productReference = E3641A7034B7E8CF3A162CD7164138A0 /* Pods_Lottery.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C6BB509DEADDF3C03EEFE1F662CE830D /* SwiftLocation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96D4DD28002EE0C03BCFA2F629A926C /* Build configuration list for PBXNativeTarget "SwiftLocation" */;
+			buildPhases = (
+				3CE7BF4760AB5675E6E0FE9F59BAF5D2 /* Sources */,
+				1D7FFE20678D8010B19F7AA57AB267FC /* Frameworks */,
+				8D908555FD0DE2904CC00262368ED04B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftLocation;
+			productName = SwiftLocation;
+			productReference = 85FEEF5DEF9E794238E164D36F44DCA8 /* SwiftLocation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = ADC948A79354491E33A780FEE92DAB32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				59A4DE71A9968BADBEA2A6359C10FDC6 /* Pods-Lottery */,
+				C6BB509DEADDF3C03EEFE1F662CE830D /* SwiftLocation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3CE7BF4760AB5675E6E0FE9F59BAF5D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C62FD111F8D9E961AA12F35399978CC0 /* BeaconAdvertiseRequest.swift in Sources */,
+				83AB75210130C54353E5A7C0CC5CB475 /* BeaconRegionRequest.swift in Sources */,
+				74B5C71903791D6AEA8CCC1D35CA26D9 /* BeaconsManager.swift in Sources */,
+				66C9188C13D34DCE1F97700EFD5A7076 /* Commons.swift in Sources */,
+				32F9CAEFFDB10F5752091EC0C76AC3FD /* GeoRegionRequest.swift in Sources */,
+				C7BB25CD41CD5A525316D268FB67E46A /* HeadingRequest.swift in Sources */,
+				D6D9248ED70366DE29138211298115C7 /* LocationManager.swift in Sources */,
+				44B5A29EFAD5D508F29524B0E2DD53E2 /* LocationRequest.swift in Sources */,
+				0D78044BF9234AD40C6AFFD5BFDF1905 /* SwiftLocation-dummy.m in Sources */,
+				B271235EADDB7D89A957B4BA327170EC /* VisitRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD5E14EE583F6F4968EC65CD81D0B1E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D43EBAD94E3C888EBC9FA4829B70052 /* Pods-Lottery-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19535CB28A0254B4A143996D910EFDAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLocation;
+			target = C6BB509DEADDF3C03EEFE1F662CE830D /* SwiftLocation */;
+			targetProxy = 1EFA76389CF8DE8FDD4000C35E2A29E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		258734E0A2994AA925A70603BBC1D54A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE99032F65E655F195A33F2990D100F /* SwiftLocation.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLocation/SwiftLocation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLocation/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftLocation/SwiftLocation.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftLocation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2F577F855D762149A6A32B6090E372C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 888649B09400EC5501A29E63DD87BC67 /* Pods-Lottery.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Lottery/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Lottery/Pods-Lottery.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Lottery;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD3881164BDC00E24BE551A90D0D9261 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53B2EAB1D4FACFEA2E1943B47ED348B3 /* Pods-Lottery.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Lottery/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Lottery/Pods-Lottery.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Lottery;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F9ED5B31F726FAABCE98455A1C02CFDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE99032F65E655F195A33F2990D100F /* SwiftLocation.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLocation/SwiftLocation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLocation/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftLocation/SwiftLocation.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftLocation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
+				B7324857C38B065FEB1EEE3105C2367A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99C9D53AD6448508946208EBFF428926 /* Build configuration list for PBXNativeTarget "Pods-Lottery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F577F855D762149A6A32B6090E372C9 /* Debug */,
+				BD3881164BDC00E24BE551A90D0D9261 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96D4DD28002EE0C03BCFA2F629A926C /* Build configuration list for PBXNativeTarget "SwiftLocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				258734E0A2994AA925A70603BBC1D54A /* Debug */,
+				F9ED5B31F726FAABCE98455A1C02CFDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

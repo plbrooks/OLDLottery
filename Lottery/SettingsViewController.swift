@@ -117,7 +117,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if locationDict.count > 0 {             // there is a country
             
-            
             switch component {
             case 0:
                 let sortedCountries = Array(locationDict.keys).sorted(by: <)
